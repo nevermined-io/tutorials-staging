@@ -22,6 +22,7 @@ export const NavBar = () => {
       }
     }
     fetchBalance().catch(console.error)
+  // eslint-disable-next-line
   }, [walletAddress])
 
   return (

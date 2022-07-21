@@ -31,7 +31,7 @@
     ]
   },
   "dependencies": {
-    "@nevermined-io/components-catalog": "^0.0.77",
+    "@nevermined-io/components-catalog": "^0.0.84",
     "@truffle/hdwallet-provider": "^2.0.0",
     "axios": "^0.24.0",
     "babel-eslint": "^10.1.0",
