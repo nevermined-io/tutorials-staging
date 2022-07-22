@@ -24,8 +24,6 @@ export const appConfig: Config = {
   faucetUri,
   verbose: true,
   gatewayAddress,
-  secretStoreUri: '',
-  graphHttpUri: '',
   marketplaceAuthToken: '',
   marketplaceUri,
   artifactsFolder: `${rootUri}/contracts`

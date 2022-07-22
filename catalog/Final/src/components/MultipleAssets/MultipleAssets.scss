@@ -1,6 +1,17 @@
+.items{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 10px;
+    list-style: none;
+}
+
+
 .item {
     display: inline-block;
-    font-family: monospace;
 }
 
 .asset-list {

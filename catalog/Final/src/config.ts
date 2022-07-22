@@ -1,3 +1,4 @@
+import Catalog from '@nevermined-io/components-catalog'
 import { Config } from '@nevermined-io/nevermined-sdk-js'
 import Web3 from 'web3'
 
@@ -18,9 +19,7 @@ export const appConfig: Config = {
   faucetUri,
   verbose: true,
   gatewayAddress,
-  secretStoreUri: '',
-  graphHttpUri: '',
-  marketplaceAuthToken: '',
+  marketplaceAuthToken: typeof window !== 'undefined' ? Catalog.fetchMarketplaceApiTokenFromLocalStorage().token : '',
   marketplaceUri,
   artifactsFolder: `${rootUri}/contracts`
 }

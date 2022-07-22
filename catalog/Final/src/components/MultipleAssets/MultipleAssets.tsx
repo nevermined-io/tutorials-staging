@@ -1,6 +1,6 @@
 import Catalog from '@nevermined-io/components-catalog'
-import { SingleAsset } from 'components/SingleAsset/SingleAsset'
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import './MultipleAssets.scss'
 
 const q = {
@@ -16,7 +16,6 @@ const q = {
 export const MultipleAssets = () => {
   const { isLoading: isLoadingAssets, result } = Catalog.useAssets(q)
   const [dids, setDids] = useState<string[]>()
-  const [assetDid, setAssetDid] = useState<string>('')
 
   useEffect(() => {
     setDids(result?.results?.map((asset) => asset.id))
@@ -27,10 +26,6 @@ export const MultipleAssets = () => {
   function filterItems(query: string) {
     setQuery(query)
     setDids(result?.results?.map((asset) => asset.id)?.filter((item) => item.includes(query)))
-  }
-
-  function handleAssetClick(did: string) {
-    setAssetDid(did)
   }
 
   return (
@@ -52,14 +47,11 @@ export const MultipleAssets = () => {
             {!isLoadingAssets
               ? dids?.map((asset) => (
                   <li key={asset}>
-                    <div onClick={() => handleAssetClick(asset)}>{asset}</div>
+                    <Link to={`/${asset}`}>{asset}</Link>
                   </li>
                 ))
               : 'Loading assets...'}
           </ul>
-        </div>
-        <div className="item">
-          <SingleAsset did={assetDid!} />
         </div>
       </div>
     </>

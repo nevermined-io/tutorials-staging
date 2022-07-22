@@ -22,7 +22,7 @@ export const NavBar = () => {
       }
     }
     fetchBalance().catch(console.error)
-  // eslint-disable-next-line
+    // eslint-disable-next-line
   }, [walletAddress])
 
   return (
@@ -32,6 +32,11 @@ export const NavBar = () => {
           <li className="nav-li">
             <a className="nav-link" href="/">
               Home
+            </a>
+          </li>
+          <li className="nav-li">
+            <a className="nav-link" href="/publish">
+              New
             </a>
           </li>
           <li className="nav-li nav-right">
