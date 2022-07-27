@@ -1,8 +1,7 @@
-import Catalog from '@nevermined-io/components-catalog'
+import Catalog from '@nevermined-io/catalog-core'
 import React, { useEffect, useState } from 'react'
 
 function App() {
-
   const query = {
     offset: 150,
     page: 1,
@@ -10,22 +9,22 @@ function App() {
     sort: {
       created: 'desc'
     }
-  };
+  }
 
   const MultipleAssets = () => {
     const { isLoading: isLoadingAssets, result } = Catalog.useAssets(query)
     const [dids, setDids] = useState<string[]>()
 
     useEffect(() => {
-      setDids(result?.results?.map(asset => asset.id))
+      setDids(result?.results?.map((asset) => asset.id))
     }, [result])
 
-    const [filterQuery, setQuery] = useState("")
+    const [filterQuery, setQuery] = useState('')
 
     function filterItems(query: string) {
-       setQuery(query)
-       setDids(result?.results?.map(asset => asset.id)?.filter(item => item.includes(query)))
-     }
+      setQuery(query)
+      setDids(result?.results?.map((asset) => asset.id)?.filter((item) => item.includes(query)))
+    }
 
     return (
       <>
@@ -40,18 +39,22 @@ function App() {
         />
         <div>Assets: </div>
         <div>
-          <ul>{!isLoadingAssets ? dids?.map(asset => <li key={asset}>{asset}</li>) : "Loading assets..."}</ul>
+          <ul>
+            {!isLoadingAssets
+              ? dids?.map((asset) => <li key={asset}>{asset}</li>)
+              : 'Loading assets...'}
+          </ul>
         </div>
       </>
     )
-}
+  }
   return (
     <div className="App">
       <header className="App-header">
         <MultipleAssets />
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

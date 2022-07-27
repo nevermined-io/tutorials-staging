@@ -1,9 +1,9 @@
-import Catalog from '@nevermined-io/components-catalog'
-import React, { useEffect, useState } from 'react'
+import { MetaMask } from '@nevermined-io/catalog-providers'
+import React from 'react'
 
 function App() {
 
-  const { loginMetamask, walletAddress, logout, checkIsLogged } = Catalog.useWallet();
+  const { loginMetamask, walletAddress, logout } = MetaMask.useWallet();
   
   return (
     <div className="App">
