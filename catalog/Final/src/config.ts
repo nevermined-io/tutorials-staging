@@ -1,4 +1,4 @@
-import Catalog from '@nevermined-io/components-catalog'
+import Catalog from '@nevermined-io/catalog-core'
 import { Config } from '@nevermined-io/nevermined-sdk-js'
 import Web3 from 'web3'
 
@@ -13,7 +13,7 @@ export const marketplaceUri = process.env.REACT_APP_MARKETPLACE_URI || 'https://
 
 export const appConfig: Config = {
   //@ts-ignore
-  web3Provider: new Web3(window.ethereum),
+  web3Provider: typeof window !== 'undefined' ? window.ethereum : new ethers.providers.JsonRpcProvider(nodeUri),
   nodeUri,
   gatewayUri,
   faucetUri,

@@ -1,4 +1,5 @@
-import Catalog from '@nevermined-io/components-catalog'
+import { MetaMask } from '@nevermined-io/catalog-providers' 
+import Catalog from '@nevermined-io/catalog-core'
 import React, { useEffect, useState } from 'react'
 import './NavBar.scss'
 import ChainConfig from '../../ChainConfig'
@@ -6,10 +7,10 @@ import Web3 from 'web3'
 
 // This component is used to display the navbar and integrate the connection with your Metamask wallet.
 export const NavBar = () => {
-  const { loginMetamask, walletAddress, logout } = Catalog.useWallet()
+  const { loginMetamask, walletAddress, logout } = MetaMask.useWallet()
   const web3 = new Web3(window.ethereum)
   const { isLoadingSDK } = Catalog.useNevermined()
-  const [balance, setBalance] = useState<string | number>()
+  const [balance, setBalance] = useState<string>()
 
   useEffect(() => {
     const fetchBalance = async () => {
@@ -40,13 +41,11 @@ export const NavBar = () => {
             </a>
           </li>
           <li className="nav-li nav-right">
-            <div className="nav-item">
               {!walletAddress ? (
-                <button onClick={loginMetamask}>Login</button>
+                <div className="nav-link" onClick={loginMetamask}>Login</div>
               ) : (
-                <button onClick={logout}>logout</button>
+                <div className="nav-link" onClick={logout}>logout</div>
               )}
-            </div>
           </li>
           {walletAddress ? (
             <>

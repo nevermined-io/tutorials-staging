@@ -1,4 +1,4 @@
-import Catalog from '@nevermined-io/components-catalog'
+import Catalog from '@nevermined-io/catalog-core'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './MultipleAssets.scss'

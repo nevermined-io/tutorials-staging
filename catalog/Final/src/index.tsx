@@ -3,25 +3,24 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter } from "react-router-dom";
 import './index.css'
 import App from './App'
-import Catalog from '@nevermined-io/components-catalog'
+import { MetaMask } from '@nevermined-io/catalog-providers';
+import Catalog from '@nevermined-io/catalog-core'
 import { appConfig } from './config'
 import ChainConfig from './ChainConfig'
 import reportWebVitals from './reportWebVitals'
 
 ReactDOM.render(
-  <div>
     <BrowserRouter>
       <Catalog.NeverminedProvider config={appConfig}>
-        <Catalog.WalletProvider
+        <MetaMask.WalletProvider
           nodeUri={appConfig.nodeUri!}
           correctNetworkId="0x13881"
           chainConfig={ChainConfig}
         >
           <App />
-        </Catalog.WalletProvider>
+        </MetaMask.WalletProvider>
       </Catalog.NeverminedProvider>
-    </BrowserRouter>
-  </div>,
+    </BrowserRouter>,
   document.getElementById('root') as HTMLElement
 )
 

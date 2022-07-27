@@ -1,5 +1,6 @@
-import Catalog from '@nevermined-io/components-catalog'
+import Catalog from '@nevermined-io/catalog-core'
 import { MetaData } from '@nevermined-io/nevermined-sdk-js'
+import AssetRewards from '@nevermined-io/nevermined-sdk-js/dist/node/models/AssetRewards'
 import React, { useState } from 'react'
 import './PublishAsset.scss'
 
@@ -18,7 +19,7 @@ export const PublishAsset = () => {
       price: String(asset?.price),
       datePublished: new Date().toISOString().replace(/\.[0-9]{3}/, ''),
       type: 'dataset',
-      files: []
+      files: [{url: asset?.file, contentType: 'text/markdown'}],
     },
     additionalInformation: {
       description: asset?.description,
@@ -40,9 +41,11 @@ export const PublishAsset = () => {
         await account.generateToken()
       }
       const ddo = await sdk.assets.create(metadata, wallet)
+      // assets.mint(ddo.id)
       setDidDeployed(ddo.id)
     }
   }
+  
 
   async function handleOnSubmitNft() {
     if (!isLoadingSDK) {
@@ -50,10 +53,11 @@ export const PublishAsset = () => {
       if (!account.isTokenValid()) {
         await account.generateToken()
       }
-      const ddo = await sdk.assets.create(metadata, wallet)
-      setDidDeployed(ddo.id)
+      const mintAsset = await sdk.nfts.create(metadata, wallet, 10, 0, new AssetRewards())
+      setDidDeployed(mintAsset.id)
     }
   }
+
 
   return (
     <>
@@ -80,6 +84,12 @@ export const PublishAsset = () => {
                 value={asset?.description}
                 onChange={handleInputChange}
               />
+            </label>
+          </div>
+          <div className="row">
+            <label>
+              File url:
+              <input name="file" type="text" value={asset?.file} onChange={handleInputChange} />
             </label>
           </div>
           <div className="row">
