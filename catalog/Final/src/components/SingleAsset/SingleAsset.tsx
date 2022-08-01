@@ -11,7 +11,6 @@ export const SingleAsset = () => {
 
   async function handleDownload() {
     if (!isLoadingSDK) {
-      await sdk?.accounts?.list().then((list) => list[0])
       if (!account.isTokenValid()) {
         await account.generateToken()
       }

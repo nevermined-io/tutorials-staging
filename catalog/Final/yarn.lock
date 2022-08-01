@@ -2022,6 +2022,11 @@
   dependencies:
     node-fetch "^2.6.0"
 
+"@nevermined-io/styles@^0.1.6":
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@nevermined-io/styles/-/styles-0.1.6.tgz#c5b3b7fa4451b17d9ef34e79904fd419710b8e7e"
+  integrity sha512-AtGkUveO4pT5XvkoHxNytfWdAEmMUvtX9Ui729VGap/8VNG+LSCfuiYv+JICQCL8Z4S2LYxU58VqBNGLeC3g/g==
+
 "@nevermined-io/subgraphs@0.4.1":
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/@nevermined-io/subgraphs/-/subgraphs-0.4.1.tgz#98eebe969b378eb59d82934db8ded0415cf96327"
