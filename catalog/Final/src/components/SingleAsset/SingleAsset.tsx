@@ -15,6 +15,8 @@ export const SingleAsset = () => {
       if (!account.isTokenValid()) {
         await account.generateToken()
       }
+      // First order the asset
+      // await assets.consumeAsset(ddo.id)
       await assets.downloadAsset(params.did!)
     }
   }
