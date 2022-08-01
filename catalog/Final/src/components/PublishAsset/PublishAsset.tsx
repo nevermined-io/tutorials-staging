@@ -17,6 +17,7 @@ export const PublishAsset = () => {
   const { onAssetPublish, onAsset721Publish, onAsset1155Publish, assetPublish, setAssetPublish } =
     Catalog.useAssetPublish()
   const [didDeployed, setDidDeployed] = useState<any>()
+  const [erc20, setErc20] = useState<string>('0x9A753f0F7886C9fbF63cF59D0D4423C5eFaCE95B')
 
   const metadata: MetaData = {
     main: {
@@ -42,9 +43,9 @@ export const PublishAsset = () => {
 
   async function handleOnSubmitNft721() {
     const mintAsset = await onAsset721Publish({
-      nftAddress: '0x9A753f0F7886C9fbF63cF59D0D4423C5eFaCE95B',
+      nftAddress: erc20,
       metadata: metadata
-    })
+    })  
     setDidDeployed(mintAsset!.id)
   }
 
@@ -106,6 +107,15 @@ export const PublishAsset = () => {
               label="Price"
               value={assetPublish?.price}
               onChange={(e) => setAssetPublish({ ...assetPublish, price: e.target.value })}
+            />
+          </UiFormGroup>
+          <UiFormGroup orientation={Orientation.Vertical}>
+          <UiFormInput
+              name="erc20"
+              type="text"
+              label="Nft Address"
+              value={erc20}
+              onChange={(e) => setErc20(e.target.value)}
             />
           </UiFormGroup>
           <UiDivider />
