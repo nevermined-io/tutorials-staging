@@ -11,10 +11,11 @@ export const SingleAsset = () => {
 
   async function handleDownload() {
     if (!isLoadingSDK) {
-      await sdk?.accounts?.list().then((list) => list[0])
       if (!account.isTokenValid()) {
         await account.generateToken()
       }
+      // First order the asset
+      // await assets.consumeAsset(ddo.id)
       await assets.downloadAsset(params.did!)
     }
   }

@@ -12,13 +12,15 @@ import reportWebVitals from './reportWebVitals'
 ReactDOM.render(
   <BrowserRouter>
     <Catalog.NeverminedProvider config={appConfig}>
-      <MetaMask.WalletProvider
-        nodeUri={appConfig.nodeUri!}
-        correctNetworkId="0x13881"
-        chainConfig={ChainConfig}
-      >
-        <App />
-      </MetaMask.WalletProvider>
+      <Catalog.AssetPublishProvider>
+        <MetaMask.WalletProvider
+          nodeUri={appConfig.nodeUri!}
+          correctNetworkId="0x13881"
+          chainConfig={ChainConfig}
+        >
+          <App />
+        </MetaMask.WalletProvider>
+      </Catalog.AssetPublishProvider>
     </Catalog.NeverminedProvider>
   </BrowserRouter>,
   document.getElementById('root') as HTMLElement
