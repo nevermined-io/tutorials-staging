@@ -1,7 +1,7 @@
 import Catalog from '@nevermined-io/catalog-core'
+import { UiDivider, UiLayout, UiText, UiFormInput } from '@nevermined-io/styles'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import './MultipleAssets.scss'
 
 const q = {
   offset: 150,
@@ -30,30 +30,27 @@ export const MultipleAssets = () => {
 
   return (
     <>
-      <div className="items">
-        <div className="item">
-          <div>
-            <input
-              type="search"
-              name="search-form"
-              id="search-form"
-              className="search-input"
-              placeholder="Search for..."
-              value={query}
-              onChange={(e) => filterItems(e.target.value)}
-            />
-          </div>
-          <ul className="asset-list">
-            {!isLoadingAssets
-              ? dids?.map((asset) => (
-                  <li key={asset}>
-                    <Link to={`/${asset}`}>{asset}</Link>
-                  </li>
-                ))
-              : 'Loading assets...'}
-          </ul>
-        </div>
-      </div>
+      <UiLayout type="grid" align="center" direction="column">
+        <UiDivider />
+        <UiFormInput
+          type="search"
+          name="search-form"
+          id="search-form"
+          placeholder="Search for..."
+          value={query}
+          onChange={(e) => filterItems(e.target.value)}
+        />
+        <UiDivider />
+        <ul>
+          {!isLoadingAssets
+            ? dids?.map((asset) => (
+                <li key={asset}>
+                  <Link to={`/${asset}`}><UiText>{asset}</UiText></Link>
+                </li>
+              ))
+            : <UiText>Loading assets...</UiText>}
+        </ul>
+      </UiLayout>
     </>
   )
 }

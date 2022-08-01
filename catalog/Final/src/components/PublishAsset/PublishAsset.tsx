@@ -1,11 +1,20 @@
 import Catalog from '@nevermined-io/catalog-core'
 import { MetaData } from '@nevermined-io/nevermined-sdk-js'
 import React, { useState } from 'react'
-import './PublishAsset.scss'
+import {
+  UiButton,
+  UiDivider,
+  UiFormGroup,
+  UiForm,
+  UiFormInput,
+  UiLayout,
+  Orientation,
+  UiText
+} from '@nevermined-io/styles'
 
 // This component is used to publish an asset.
 export const PublishAsset = () => {
-  const { onAssetPublish, onAsset1155Publish, assetPublish, setAssetPublish } =
+  const { onAssetPublish, onAsset721Publish, onAsset1155Publish, assetPublish, setAssetPublish } =
     Catalog.useAssetPublish()
   const [didDeployed, setDidDeployed] = useState<any>()
 
@@ -26,16 +35,17 @@ export const PublishAsset = () => {
     }
   } as MetaData
 
-  function handleInputChange(event: any) {
-    const target = event.target
-    // const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name
-    setAssetPublish({ ...assetPublish, [name]: target.value })
-  }
-
   async function handleOnSubmit() {
     const ddo = await onAssetPublish({ metadata: metadata })
     setDidDeployed(ddo!.id)
+  }
+
+  async function handleOnSubmitNft721() {
+    const mintAsset = await onAsset721Publish({
+      nftAddress: '0x9A753f0F7886C9fbF63cF59D0D4423C5eFaCE95B',
+      metadata: metadata
+    })
+    setDidDeployed(mintAsset!.id)
   }
 
   async function handleOnSubmitNft() {
@@ -49,67 +59,68 @@ export const PublishAsset = () => {
   }
 
   return (
-    <div>
-      <form>
-        <div className="row">
-          <label>
-            Name:
-            <input
+    <UiLayout type="container" align="center" direction="column">
+      <UiDivider />
+      <UiLayout type="grid" align="center" direction="row">
+        <UiForm>
+          <UiFormGroup orientation={Orientation.Vertical}>
+            <UiFormInput
               name="name"
               type="text"
+              label="Name"
               value={assetPublish?.name}
-              onChange={handleInputChange}
+              onChange={(e) => setAssetPublish({ ...assetPublish, name: e.target.value })}
             />
-          </label>
-        </div>
-        <div className="row">
-          <label>
-            Author:
-            <input
+          </UiFormGroup>
+          <UiFormGroup orientation={Orientation.Vertical}>
+            <UiFormInput
               name="author"
               type="text"
+              label="Author"
               value={assetPublish?.author}
-              onChange={handleInputChange}
+              onChange={(e) => setAssetPublish({ ...assetPublish, author: e.target.value })}
             />
-          </label>
-        </div>
-        <div className="row">
-          <label>
-            Description:
-            <input
+          </UiFormGroup>
+          <UiFormGroup orientation={Orientation.Vertical}>
+            <UiFormInput
               name="description"
               type="text"
+              label="Description"
               value={assetPublish?.description}
-              onChange={handleInputChange}
+              onChange={(e) => setAssetPublish({ ...assetPublish, description: e.target.value })}
             />
-          </label>
-        </div>
-        <div className="row">
-          <label>
-            File url:
-            <input
+          </UiFormGroup>
+          <UiFormGroup orientation={Orientation.Vertical}>
+            <UiFormInput
               name="file"
               type="text"
+              label="File url"
               value={assetPublish?.file}
-              onChange={handleInputChange}
+              onChange={(e) => setAssetPublish({ ...assetPublish, file: e.target.value })}
             />
-          </label>
-        </div>
-        <div className="row">
-          <label>
-            Price:
-            <input
+          </UiFormGroup>
+          <UiFormGroup orientation={Orientation.Vertical}>
+            <UiFormInput
               name="price"
               type="text"
+              label="Price"
               value={assetPublish?.price}
-              onChange={handleInputChange}
+              onChange={(e) => setAssetPublish({ ...assetPublish, price: e.target.value })}
             />
-          </label>
-        </div>
-      </form>
-      <button onClick={handleOnSubmit}>Publish</button>
-      <button onClick={handleOnSubmitNft}>Mint Nft</button>
-      {didDeployed ? <div>{didDeployed} succesfully.</div> : <></>}
-    </div>
+          </UiFormGroup>
+          <UiDivider />
+          <UiLayout type="grid" align="center" direction="row">
+            <UiButton onClick={handleOnSubmit}>Publish</UiButton>
+            <UiDivider vertical />
+
+            <UiButton onClick={handleOnSubmitNft721}>Mint Nft 721</UiButton>
+            <UiDivider vertical />
+
+            <UiButton onClick={handleOnSubmitNft}>Mint Nft 1155</UiButton>
+          </UiLayout>
+        </UiForm>
+        {didDeployed ? <UiText>{didDeployed} succesfully.</UiText> : <></>}
+      </UiLayout>
+    </UiLayout>
   )
 }
