@@ -1,4 +1,5 @@
 import Catalog from '@nevermined-io/catalog-core'
+import { MetaMask } from '@nevermined-io/catalog-providers'
 import { UiButton, UiLayout, UiDivider, UiText } from '@nevermined-io/styles'
 import React from 'react'
 import { useParams } from 'react-router-dom'
@@ -7,12 +8,24 @@ import { useParams } from 'react-router-dom'
 export const SingleAsset = () => {
   let params = useParams()
   const { sdk, isLoadingSDK, account, assets } = Catalog.useNevermined()
+  const { walletAddress } = MetaMask.useWallet()
+
   const { ddo, isLoading, metadata } = Catalog.useAsset(params.did!)
 
   async function handleDownload() {
-    // First order the asset
-    // await assets.consumeAsset(ddo.id)
-    await assets.downloadAsset(params.did!)
+    if (!isLoadingSDK) {
+      const account = await sdk?.accounts.list().then((list) => list[0])
+      const address = walletAddress
+      const owner = await sdk?.assets.owner(params.did!)
+      if (owner === address) {
+        // If the asset is owned by the current account, we can download it
+        console.log('Downloading asset')
+        await assets.downloadAsset(params.did!)
+      } else {
+        const agreementId = await sdk.assets.order(params.did!, 'access', account)
+        await sdk.assets.consume(agreementId, params.did!, account)
+      }
+    }
   }
 
   async function handleNFTDownload() {
@@ -50,6 +63,7 @@ export const SingleAsset = () => {
           <UiText> Description: {metadata.additionalInformation?.description}</UiText>
           <UiText> Services: {JSON.stringify(ddo.service.map((x) => x.type))}</UiText>
           <UiText> Price: {metadata.main.price}</UiText>
+          <UiText> Owner: {ddo.proof.creator}</UiText>
           {hasAccessService() && <UiButton onClick={handleDownload}>Download Files</UiButton>}
           {hasNft721Access() && <UiButton onClick={handleNFTDownload}>Download NFT 721</UiButton>}
           {hasNft1155Access() && <UiButton onClick={handleNFTDownload}>Download NFT 1155</UiButton>}
