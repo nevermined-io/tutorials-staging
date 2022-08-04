@@ -42,13 +42,17 @@ export const MultipleAssets = () => {
         />
         <UiDivider />
         <ul>
-          {!isLoadingAssets
-            ? dids?.map((asset) => (
-                <li key={asset}>
-                  <Link to={`/${asset}`}><UiText>{asset}</UiText></Link>
-                </li>
-              ))
-            : <UiText>Loading assets...</UiText>}
+          {!isLoadingAssets ? (
+            dids?.map((asset) => (
+              <li key={asset}>
+                <Link to={`/did/${asset}`}>
+                  <UiText>{asset}</UiText>
+                </Link>
+              </li>
+            ))
+          ) : (
+            <UiText>Loading assets...</UiText>
+          )}
         </ul>
       </UiLayout>
     </>

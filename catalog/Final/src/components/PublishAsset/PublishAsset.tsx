@@ -1,5 +1,7 @@
 import Catalog from '@nevermined-io/catalog-core'
 import { MetaData } from '@nevermined-io/nevermined-sdk-js'
+import { RoyaltyKind } from '@nevermined-io/nevermined-sdk-js/dist/node/nevermined/Assets'
+
 import React, { useState } from 'react'
 import {
   UiButton,
@@ -9,15 +11,23 @@ import {
   UiFormInput,
   UiLayout,
   Orientation,
-  UiText
+  UiText,
+  UiFormSelect
 } from '@nevermined-io/styles'
 
+export const assetTypes = ['Asset', 'NFT721', 'NFT1155']
 // This component is used to publish an asset.
 export const PublishAsset = () => {
+  const { sdk } = Catalog.useNevermined()
+
   const { onAssetPublish, onAsset721Publish, onAsset1155Publish, assetPublish, setAssetPublish } =
     Catalog.useAssetPublish()
   const [didDeployed, setDidDeployed] = useState<any>()
-  const [erc20, setErc20] = useState<string>('0x9A753f0F7886C9fbF63cF59D0D4423C5eFaCE95B')
+  const [erc20, setErc20] = useState<string>(sdk.token.getAddress())
+  const [cap, setCap] = useState<number>(0)
+  const [royalties, setRoyalties] = useState<number>(0)
+  const [royaltiesKind, setRoyaltiesKind] = useState<number>(RoyaltyKind.Standard)
+  const [typeAsset, setTypeAsset] = useState<string>('Asset')
 
   const metadata: MetaData = {
     main: {
@@ -45,23 +55,44 @@ export const PublishAsset = () => {
     const mintAsset = await onAsset721Publish({
       nftAddress: erc20,
       metadata: metadata
-    })  
+    })
     setDidDeployed(mintAsset!.id)
   }
 
   async function handleOnSubmitNft() {
     const mintAsset = await onAsset1155Publish({
       metadata: metadata,
-      cap: 10,
-      royalties: 0,
-      royaltyKind: 0
+      cap: cap,
+      royalties: royalties,
+      royaltyKind: royaltiesKind
     })
     setDidDeployed(mintAsset!.id)
+  }
+
+  function isAsset() {
+    return typeAsset === 'Asset'
+  }
+  function is721() {
+    return typeAsset === 'NFT721'
+  }
+  function is1155() {
+    return typeAsset === 'NFT1155'
   }
 
   return (
     <UiLayout type="container" align="center" direction="column">
       <UiDivider />
+      <UiForm>
+        <UiFormGroup orientation={Orientation.Vertical}>
+          <UiFormSelect
+            name="name"
+            label="Type of asset"
+            value={typeAsset}
+            options={assetTypes}
+            onChange={(e) => setTypeAsset(e as string)}
+          ></UiFormSelect>
+        </UiFormGroup>
+      </UiForm>
       <UiLayout type="grid" align="center" direction="row">
         <UiForm>
           <UiFormGroup orientation={Orientation.Vertical}>
@@ -109,24 +140,55 @@ export const PublishAsset = () => {
               onChange={(e) => setAssetPublish({ ...assetPublish, price: e.target.value })}
             />
           </UiFormGroup>
-          <UiFormGroup orientation={Orientation.Vertical}>
-          <UiFormInput
-              name="erc20"
-              type="text"
-              label="Nft Address"
-              value={erc20}
-              onChange={(e) => setErc20(e.target.value)}
-            />
-          </UiFormGroup>
+          {is721() && (
+            <UiFormGroup orientation={Orientation.Vertical}>
+              <UiFormInput
+                name="erc20"
+                type="text"
+                label="Nft Address"
+                value={erc20}
+                onChange={(e) => setErc20(e.target.value)}
+              />
+            </UiFormGroup>
+          )}
+          {is1155() && (
+            <>
+              <UiFormGroup orientation={Orientation.Vertical}>
+                <UiFormInput
+                  name="cap"
+                  type="number"
+                  inputMode="numeric"
+                  label="Cap"
+                  value={cap}
+                  onChange={(e) => setCap(e.target.value)}
+                />
+              </UiFormGroup>
+              <UiFormGroup orientation={Orientation.Vertical}>
+                <UiFormInput
+                  name="Royalties"
+                  type="number"
+                  inputMode="numeric"
+                  label="Royalties"
+                  value={royalties}
+                  onChange={(e) => setRoyalties(e.target.value)}
+                />
+              </UiFormGroup>
+              <UiFormGroup orientation={Orientation.Vertical}>
+                <UiFormSelect
+                  name="name"
+                  label="Type of asset"
+                  value={royaltiesKind}
+                  options={Object.keys(RoyaltyKind).filter((v) => isNaN(Number(v)))}
+                  onChange={(e) => setRoyaltiesKind(e.valueOf() as number)}
+                ></UiFormSelect>
+              </UiFormGroup>
+            </>
+          )}
           <UiDivider />
           <UiLayout type="grid" align="center" direction="row">
-            <UiButton onClick={handleOnSubmit}>Publish</UiButton>
-            <UiDivider vertical />
-
-            <UiButton onClick={handleOnSubmitNft721}>Mint Nft 721</UiButton>
-            <UiDivider vertical />
-
-            <UiButton onClick={handleOnSubmitNft}>Mint Nft 1155</UiButton>
+            {isAsset() && <UiButton onClick={handleOnSubmit}>Publish</UiButton>}
+            {is721() && <UiButton onClick={handleOnSubmitNft721}>Publish NFT 721</UiButton>}
+            {is1155() && <UiButton onClick={handleOnSubmitNft}>Publish NFT 1155</UiButton>}
           </UiLayout>
         </UiForm>
         {didDeployed ? <UiText>{didDeployed} succesfully.</UiText> : <></>}

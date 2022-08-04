@@ -7,6 +7,7 @@ import { NavBar } from 'components/NavBar/NavBar'
 import { PublishAsset } from 'components/PublishAsset/PublishAsset'
 import { Route, Routes } from 'react-router-dom'
 import { SingleAsset } from 'components/SingleAsset/SingleAsset'
+import { User } from 'components/User/User'
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<MultipleAssets />} />
-        <Route path=":did" element={<SingleAsset />} />
+        <Route path="/did/:did" element={<SingleAsset />} />
         <Route path="/publish" element={<PublishAsset />} />
+        <Route path="/user/:address" element={<User />} />
       </Routes>
     </div>
   )

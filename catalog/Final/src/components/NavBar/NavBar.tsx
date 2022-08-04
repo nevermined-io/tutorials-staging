@@ -5,6 +5,7 @@ import './NavBar.scss'
 import ChainConfig from '../../ChainConfig'
 import Web3 from 'web3'
 import { UiButton, UiText } from '@nevermined-io/styles'
+import { Link } from 'react-router-dom'
 
 // This component is used to display the navbar and integrate the connection with your Metamask wallet.
 export const NavBar = () => {
@@ -57,7 +58,11 @@ export const NavBar = () => {
               </UiText>
             </li>
             <li className="nav-right">
-              <UiText className="nav-item">{walletAddress}</UiText>
+              <Link to={`/user/${walletAddress}`}>
+                <UiText className="nav-item">
+                  {`${walletAddress.substr(0, 6)}...${walletAddress.substr(-4)}`}
+                </UiText>{' '}
+              </Link>
             </li>
             <li className="nav-right">
               <UiText className="nav-item">{`${balance}  ${
