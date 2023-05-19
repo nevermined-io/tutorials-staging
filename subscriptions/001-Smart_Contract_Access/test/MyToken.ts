@@ -56,7 +56,7 @@ describe("MyToken Test", function () {
 
         before(async () => {
             myTokenSsubscriberSigner = myToken.connect(subscriber)
-            await myToken.mintGiveAway(subscriber.address, giveAwayAmount)
+            await myToken.allocateAirdrop(subscriber.address, giveAwayAmount)
         })
         
         it("A subscriber should have some give away to claim", async function () {

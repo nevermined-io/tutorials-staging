@@ -22,7 +22,7 @@ contract MyToken is ERC20 {
     // A mapping is a key/value map. Here we store each account's balance.
     mapping(address => uint256) giveAwayBalances;
 
-    event Claimed(address indexed _who, uint256 _amount);
+    event Airdropped(address indexed _who, uint256 _amount);
 
     modifier onlySubscribers(address _address) {
         require(
@@ -46,7 +46,7 @@ contract MyToken is ERC20 {
         require(giveAwayBalances[msg.sender] >= amount, "You don't have enough tokens to claim");
         giveAwayBalances[msg.sender] -= amount;
         _mint(msg.sender, amount);
-        emit Claimed(msg.sender, amount);
+        emit Airdropped(msg.sender, amount);
     }
     
     function claimAll() public onlySubscribers(msg.sender) {
@@ -57,7 +57,7 @@ contract MyToken is ERC20 {
         return giveAwayBalances[msg.sender];
     }
 
-    function mintGiveAway(address receiver, uint256 amount) public {
+    function allocateAirdrop(address receiver, uint256 amount) public {
         require(msg.sender == owner, "You are not the owner");
         giveAwayBalances[receiver] += amount;
     }
