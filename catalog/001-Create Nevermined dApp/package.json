@@ -4,6 +4,7 @@
   "private": false,
   "scripts": {
     "start": "GENERATE_SOURCEMAP=false PORT=3445 BROWSER=none react-app-rewired start",
+    "artifacts:arbitrum-goerli": "./scripts/download-artifacts.sh v3.2.2 arbitrum-goerli",
     "build": "npm run clean && npm run build:tsc && npm run build:webpack",
     "build:react": "react-scripts build",
     "build:tsc": "tsc --noEmit false",
@@ -31,13 +32,15 @@
     ]
   },
   "dependencies": {
-    "@nevermined-io/catalog-core": "^0.0.17",
+    "@ethersproject/abstract-provider": "^5.7.0",
+    "@nevermined-io/catalog": "1.8.1",
     "@truffle/hdwallet-provider": "^2.0.0",
     "axios": "^0.24.0",
     "babel-eslint": "^10.1.0",
     "bem-helpers": "^1.1.0",
     "bip39": "^3.0.4",
     "classnames": "^2.3.1",
+    "ethers": "^5.7.2",
     "lodash.uniqby": "^4.7.0",
     "node-fetch": "^3.2.0",
     "os-browserify": "^0.3.0",
@@ -70,6 +73,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "babel-loader": "8.1.0",
+    "constants-browserify": "^1.0.0",
     "css-loader": "5.2.7",
     "cypress": "^9.1.1",
     "cypress-log-to-output": "^1.1.2",

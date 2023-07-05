@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
-import Catalog from '@nevermined-io/catalog-core'
+import { Catalog } from '@nevermined-io/catalog'
 import { appConfig } from './config'
 import reportWebVitals from './reportWebVitals'
 
