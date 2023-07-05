@@ -1,4 +1,4 @@
-import Catalog from '@nevermined-io/catalog-core'
+import { AssetService } from '@nevermined-io/catalog'
 import React, { useEffect, useState } from 'react'
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
   }
 
   const MultipleAssets = () => {
-    const { isLoading: isLoadingAssets, result } = Catalog.useAssets(query)
+    const { isLoading: isLoadingAssets, result } = AssetService.useAssets(query)
     const [dids, setDids] = useState<string[]>()
 
     useEffect(() => {
