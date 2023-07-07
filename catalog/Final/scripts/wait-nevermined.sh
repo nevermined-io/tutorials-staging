@@ -5,11 +5,14 @@
 RETRY_COUNT=0
 COMMAND_STATUS=1
 
+mkdir -p public/contracts/
+mkdir -p public/circuits/
+
 printf '\n\e[33m◯ Waiting for contracts to be generated...\e[0m\n'
 
 until [ $COMMAND_STATUS -eq 0 ] || [ $RETRY_COUNT -eq 120 ]; do
-  nevermined_keeper_docker_id=$(docker container ls | grep nevermined-contracts | awk '{print $1}')
-  docker cp ${nevermined_keeper_docker_id}:/nevermined-contracts/artifacts/ready node_modules/@nevermined-io/contracts/artifacts/
+  nevermined_keeper_docker_id=$(docker container ls | grep nevermined-keeper-node | awk '{print $1}')
+  docker cp ${nevermined_keeper_docker_id}:/nevermined-contracts/artifacts/ready public/contracts
   COMMAND_STATUS=$?
   sleep 5
   let RETRY_COUNT=RETRY_COUNT+1
@@ -23,6 +26,10 @@ fi
 
 printf '\e[32m✔ Found new contract artifacts.\e[0m\n'
 
-docker cp ${nevermined_keeper_docker_id}:/nevermined-contracts/artifacts/. node_modules/@nevermined-io/contracts/artifacts/
+docker cp ${nevermined_keeper_docker_id}:/nevermined-contracts/artifacts/. public/contracts/
 
-printf '\e[32m✔ Copied new contract artifacts.\e[0m\n'
+docker cp ${nevermined_keeper_docker_id}:/nevermined-contracts/circuits/keytransfer.wasm public/circuits/
+docker cp ${nevermined_keeper_docker_id}:/nevermined-contracts/circuits/keytransfer.zkey public/circuits/
+
+
+printf '\e[32m✔ Copied new contract artifacts and circuits.\e[0m\n'

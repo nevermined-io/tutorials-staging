@@ -1,20 +1,19 @@
-import Catalog from '@nevermined-io/catalog-core'
+import { AssetService } from '@nevermined-io/catalog'
 import { UiDivider, UiLayout, UiText, UiFormInput } from '@nevermined-io/styles'
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 
 const q = {
   offset: 150,
   page: 1,
-  query: {},
   sort: {
     created: 'desc'
   }
 }
 
 // This component is used to display a list of assets.
-export const MultipleAssets = () => {
-  const { isLoading: isLoadingAssets, result } = Catalog.useAssets(q)
+const MultipleAssets = () => {
+  const { isLoading: isLoadingAssets, result } = AssetService.useAssets(q)
   const [dids, setDids] = useState<string[]>()
 
   useEffect(() => {
@@ -45,7 +44,7 @@ export const MultipleAssets = () => {
           {!isLoadingAssets ? (
             dids?.map((asset) => (
               <li key={asset}>
-                <Link to={`/did/${asset}`}>
+                <Link href={`/asset/${asset}`}>
                   <UiText>{asset}</UiText>
                 </Link>
               </li>
@@ -58,3 +57,5 @@ export const MultipleAssets = () => {
     </>
   )
 }
+
+export default MultipleAssets

@@ -1,50 +1,55 @@
-import { MetaMask } from '@nevermined-io/catalog-providers'
-import Catalog from '@nevermined-io/catalog-core'
+import { ConnectKit, useWallet } from '@nevermined-io/providers'
+import { BigNumber, Catalog } from '@nevermined-io/catalog'
 import React, { useEffect, useState } from 'react'
-import './NavBar.scss'
-import ChainConfig from '../../ChainConfig'
-import Web3 from 'web3'
+import {chainConfig} from '../../ChainConfig'
 import { UiButton, UiText } from '@nevermined-io/styles'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
+
+const tokenAddress = '0xfd064A18f3BF249cf1f87FC203E90D8f650f2d63'
 
 // This component is used to display the navbar and integrate the connection with your Metamask wallet.
 export const NavBar = () => {
-  const { loginMetamask, walletAddress, logout } = MetaMask.useWallet()
-  const web3 = new Web3(window.ethereum)
-  const { isLoadingSDK } = Catalog.useNevermined()
+  const { walletAddress, logout } = useWallet()
+  const { isLoadingSDK, sdk } = Catalog.useNevermined()
   const [balance, setBalance] = useState<string>()
+  const [symbol, setSymbol] = useState('')
 
   useEffect(() => {
+    if(isLoadingSDK || !walletAddress) {
+      return
+    }
     const fetchBalance = async () => {
+      const customErc20Token = await sdk.contracts.loadErc20(tokenAddress)
+      const decimals = await customErc20Token.decimals()
+      const balance = await customErc20Token.balanceOf(walletAddress)
       if (walletAddress) {
         setBalance(
-          await web3.eth
-            .getBalance(web3.utils.toChecksumAddress(walletAddress))
-            .then((x) => web3.utils.fromWei(x, 'ether'))
+          BigNumber.formatUnits(balance, decimals)
         )
+        setSymbol(await customErc20Token.symbol())
       }
     }
     fetchBalance().catch(console.error)
     // eslint-disable-next-line
-  }, [walletAddress])
+  }, [walletAddress, isLoadingSDK])
 
   return (
     <div className="navbar">
       <ul className="navbar-list">
         <li className="nav-li">
-          <a className="nav-link" href="/">
+          <Link className="nav-link" href="/">
             <UiText>Home</UiText>
-          </a>
+          </Link>
         </li>
         <li className="nav-li">
-          <a className="nav-link" href="/publish">
+          <Link className="nav-link" href="/publish">
             <UiText>New</UiText>
-          </a>
+          </Link>
         </li>
         <li className=" nav-right">
           <div className="nav-item">
             {!walletAddress ? (
-              <UiButton onClick={loginMetamask}>Login</UiButton>
+              <ConnectKit.ConnectKitButton/>
             ) : (
               <UiButton onClick={logout}>logout</UiButton>
             )}
@@ -54,11 +59,11 @@ export const NavBar = () => {
           <>
             <li className="nav-right">
               <UiText className="nav-item">
-                {ChainConfig.returnConfig(window.ethereum.chainId).chainName}
+                {chainConfig[0].name}
               </UiText>
             </li>
             <li className="nav-right">
-              <Link to={`/user/${walletAddress}`}>
+              <Link href={`/user/${walletAddress}`}>
                 <UiText className="nav-item">
                   {`${walletAddress.substr(0, 6)}...${walletAddress.substr(-4)}`}
                 </UiText>{' '}
@@ -66,7 +71,7 @@ export const NavBar = () => {
             </li>
             <li className="nav-right">
               <UiText className="nav-item">{`${balance}  ${
-                ChainConfig.returnConfig(window.ethereum.chainId).nativeCurrency.symbol
+                symbol
               }`}</UiText>
             </li>
           </>
