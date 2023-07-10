@@ -5,7 +5,6 @@ function App() {
   const query = {
     offset: 150,
     page: 1,
-    query: {},
     sort: {
       created: 'desc'
     }

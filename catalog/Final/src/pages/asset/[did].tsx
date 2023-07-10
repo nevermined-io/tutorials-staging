@@ -1,20 +1,21 @@
-import Catalog from '@nevermined-io/catalog-core'
-import { MetaMask } from '@nevermined-io/catalog-providers'
+import { Catalog, AssetService, ERCType, getAccountObject } from '@nevermined-io/catalog'
+import { useWallet } from '@nevermined-io/providers'
 import { UiButton, UiLayout, UiDivider, UiText } from '@nevermined-io/styles'
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useRouter } from 'next/router'
+import { BigNumber } from 'ethers'
 
 // This component is used to display some asset information.
-export const SingleAsset = () => {
-  let params = useParams()
-  const { sdk, isLoadingSDK, assets, account } = Catalog.useNevermined()
-  const { walletAddress } = MetaMask.useWallet()
+const SingleAsset = () => {
+  const router = useRouter()
+  const { sdk, isLoadingSDK, assets, nfts } = Catalog.useNevermined()
+  const { walletAddress } = useWallet()
   const [nftDetail, setNftDetail] = useState<any>()
-  const { ddo, isLoading, metadata } = Catalog.useAsset(params.did!)
+  const { ddo, isLoading, metadata } = AssetService.useAsset(router.query.did as string, ERCType.nft721)
 
   useEffect(() => {
     const nftDetails = async () => {
-      const details = await assets.nftDetails(params.did!)
+      const details = await assets.nftDetails(router.query.did as string, ERCType.nft721)
       setNftDetail(details)
     }
     nftDetails().catch(console.error)
@@ -22,36 +23,45 @@ export const SingleAsset = () => {
 
   async function handleDownload() {
     if (!isLoadingSDK) {
-      const account = await sdk?.accounts.list().then((list) => list[0])
+      const account = await getAccountObject(sdk, walletAddress)
       const address = walletAddress
-      const owner = await sdk?.assets.owner(params.did!)
+      const owner = await sdk?.assets.owner(router.query.did as string)
       if (owner === address) {
         // If the asset is owned by the current account, we can download it
         console.log('Downloading asset')
-        await assets.downloadAsset(params.did!)
+        await assets.downloadAsset({
+          did: router.query.did as string,
+          consumer: account
+        })
       } else {
-        const agreementId = await sdk.assets.order(params.did!, 'access', account)
-        await sdk.assets.consume(agreementId, params.did!, account)
+        
       }
     }
   }
 
   async function handleNFTDownload() {
     if (!isLoadingSDK) {
-      const address = await sdk?.accounts.list().then((list) => list[0])
-      const owner = await sdk?.assets.owner(params.did!)
+      const consumer = await getAccountObject(sdk, walletAddress)
+      const owner = await sdk?.assets.owner(router.query.did as string)
       if (owner === walletAddress) {
-        return await sdk.nfts.access(params.did!, address)
+        await assets.downloadNFT({
+          did: router.query.did as string,
+          consumer,
+          ercType: ERCType.nft721
+        })
+
+        return
       }
-      if (hasNft721Access()) {
-        const agreementId = await sdk.nfts.order721(params.did!, address)
-        return await sdk.nfts.access(params.did!, address)
-      }
-      if (!account.isTokenValid()) {
-        await account.generateToken()
-      }
-      const agreementId = await sdk.nfts.order(params.did!, 1, address)
-      return await sdk.nfts.access(params.did!, address)
+
+      await nfts.access({
+        did: router.query.did as string,
+        buyer: consumer,
+        nftAmount: BigNumber.from(1),
+        ercType: ERCType.nft721,
+        nftHolder: owner
+      })
+
+      return
     }
   }
 
@@ -79,7 +89,6 @@ export const SingleAsset = () => {
           <UiText> Author: {metadata.main.author}</UiText>
           <UiText> Description: {metadata.additionalInformation?.description}</UiText>
           <UiText> Services: {JSON.stringify(ddo.service.map((x) => x.type))}</UiText>
-          <UiText> Price: {metadata.main.price}</UiText>
           <UiText> Owner: {ddo.proof.creator}</UiText>
           {hasNft1155Access() && <UiText> NFT details: {JSON.stringify(nftDetail)}</UiText>}
           {hasAccessService() && <UiButton onClick={handleDownload}>Download Files</UiButton>}
@@ -92,3 +101,5 @@ export const SingleAsset = () => {
     </>
   )
 }
+
+export default SingleAsset

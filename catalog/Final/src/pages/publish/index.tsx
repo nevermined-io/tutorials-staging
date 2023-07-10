@@ -1,8 +1,6 @@
-import Catalog from '@nevermined-io/catalog-core'
-import { MetaData } from '@nevermined-io/nevermined-sdk-js'
-import { RoyaltyKind } from '@nevermined-io/nevermined-sdk-js/dist/node/nevermined/Assets'
+import {Catalog, MetaData, RoyaltyKind, AssetService, AssetAttributes, BigNumber, AssetPrice, getAccountObject, NFTAttributes, ContractHandler, Nft721Contract} from '@nevermined-io/catalog'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   UiButton,
   UiDivider,
@@ -14,57 +12,145 @@ import {
   UiText,
   UiFormSelect
 } from '@nevermined-io/styles'
+import { useWallet } from '@nevermined-io/providers'
+import { appConfig } from '../../config'
 
 export const assetTypes = ['Asset', 'NFT721', 'NFT1155']
 // This component is used to publish an asset.
-export const PublishAsset = () => {
-  const { sdk } = Catalog.useNevermined()
-
-  const { onAssetPublish, onAsset721Publish, onAsset1155Publish, assetPublish, setAssetPublish } =
-    Catalog.useAssetPublish()
+const PublishAsset = () => {
+  const { sdk, isLoadingSDK, account } = Catalog.useNevermined()
+  const { publishAsset, publishNFT721, publishNFT1155, assetPublish, setAssetPublish } =
+    AssetService.useAssetPublish()
+  const {walletAddress} = useWallet()
   const [didDeployed, setDidDeployed] = useState<any>()
-  const [erc20, setErc20] = useState<string>(sdk.token.getAddress())
+  const [erc20, setErc20] = useState<string>('')
   const [cap, setCap] = useState<number>(0)
   const [royalties, setRoyalties] = useState<number>(0)
   const [royaltiesKind, setRoyaltiesKind] = useState<number>(RoyaltyKind.Standard)
   const [typeAsset, setTypeAsset] = useState<string>('Asset')
 
-  const metadata: MetaData = {
-    main: {
-      name: assetPublish?.name,
-      dateCreated: new Date().toISOString().replace(/\.[0-9]{3}/, ''),
-      author: assetPublish?.author,
-      license: 'No License Specified',
-      price: String(assetPublish?.price),
-      datePublished: new Date().toISOString().replace(/\.[0-9]{3}/, ''),
-      type: assetPublish?.type,
-      files: [{ url: assetPublish?.file, contentType: 'text/markdown' }]
-    },
-    additionalInformation: {
-      description: assetPublish?.description,
-      categories: []
+  useEffect(() => {
+    if(isLoadingSDK || !walletAddress) {
+      return
     }
-  } as MetaData
+
+    (async () => {
+      if (!account.isTokenValid()) {
+        const publisher = await getAccountObject(sdk, walletAddress)
+        await account.generateToken(publisher) 
+      }
+    })()
+
+    setErc20(sdk.utils.token.getAddress())
+  }, [isLoadingSDK, walletAddress])
+
+  const getAttributes = async() => {
+    const publisher = await getAccountObject(sdk, walletAddress)
+
+    const assetRewardsMap = new Map([
+      [walletAddress, BigNumber.parseUnits(Number.parseFloat(assetPublish.price).toFixed(2))]
+    ])
+
+    const feeReceiver = await sdk.keeper.nvmConfig.getFeeReceiver()
+
+    const assetPrice = new AssetPrice(assetRewardsMap).adjustToIncludeNetworkFees(
+      feeReceiver,
+      AssetPrice.NETWORK_FEE_DENOMINATOR,
+    )
+
+    assetPrice.setTokenAddress(erc20)
+
+    const metadata: MetaData = {
+      main: {
+        name: assetPublish?.name,
+        dateCreated: new Date().toISOString().replace(/\.[0-9]{3}/, ''),
+        author: assetPublish?.author,
+        license: 'No License Specified',
+        datePublished: new Date().toISOString().replace(/\.[0-9]{3}/, ''),
+        type: assetPublish?.type,
+        files: [{ url: assetPublish?.file, contentType: 'text/markdown' }]
+      },
+      additionalInformation: {
+        description: assetPublish?.description,
+        categories: []
+      }
+    } as MetaData
+
+    return {
+      assetPrice,
+      metadata,
+      publisher
+    }
+  }
 
   async function handleOnSubmit() {
-    const ddo = await onAssetPublish({ metadata: metadata })
+    const {assetPrice, publisher, metadata} = await getAttributes()
+    const attributes = AssetAttributes.getInstance({
+      metadata,
+      price: assetPrice,
+    })
+
+    const ddo = await publishAsset({ assetAttributes: attributes, publisher })
     setDidDeployed(ddo!.id)
   }
 
   async function handleOnSubmitNft721() {
-    const mintAsset = await onAsset721Publish({
+    const {assetPrice, publisher, metadata} = await getAttributes()
+    const networkName = (await sdk.keeper.getNetworkName()).toLowerCase()
+    const erc721ABI = await ContractHandler.getABI(
+      'NFT721Upgradeable',
+      appConfig.artifactsFolder,
+      networkName,
+    )
+
+    const nft = await sdk.utils.contractHandler.deployAbi(erc721ABI, publisher, [
+      walletAddress,
+      sdk.keeper.didRegistry.address,
+      'NFT721',
+      'NVM',
+      '',
+      '0',
+    ])
+
+    const nftContract = await Nft721Contract.getInstance(
+      (sdk.keeper as any).instanceConfig,
+      nft.address,
+    )
+
+    await sdk.contracts.loadNft721(nftContract.address)
+
+    const attributes = NFTAttributes.getNFT721Instance({
+      metadata,
+      price: assetPrice,
+      preMint: false,
+      nftTransfer: false,
+      royaltyAttributes: undefined,
+      nftContractAddress: nft.address,
+      serviceTypes: ['nft-sales']
+    })
+
+    const mintAsset = await publishNFT721({
       nftAddress: erc20,
-      metadata: metadata
+      nftAttributes: attributes,
+      publisher,
     })
     setDidDeployed(mintAsset!.id)
   }
 
   async function handleOnSubmitNft() {
-    const mintAsset = await onAsset1155Publish({
-      metadata: metadata,
-      cap: cap,
-      royalties: royalties,
-      royaltyKind: royaltiesKind
+    const {assetPrice, publisher, metadata} = await getAttributes()
+    const attributes = NFTAttributes.getNFT721Instance({
+      metadata,
+      price: assetPrice,
+      preMint: false,
+      nftTransfer: false,
+      royaltyAttributes: undefined,
+      serviceTypes: ['nft-sales']
+    })
+
+    const mintAsset = await publishNFT1155({
+      nftAttributes: attributes,
+      publisher
     })
     setDidDeployed(mintAsset!.id)
   }
@@ -196,3 +282,5 @@ export const PublishAsset = () => {
     </UiLayout>
   )
 }
+
+export default PublishAsset

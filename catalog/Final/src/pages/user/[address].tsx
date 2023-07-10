@@ -1,11 +1,11 @@
-import Catalog from '@nevermined-io/catalog-core'
+import { Catalog } from '@nevermined-io/catalog'
 import { UiLayout, UiDivider, UiText } from '@nevermined-io/styles'
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useRouter } from 'next/router'
 
 // This component is used to display some user information.
-export const User = () => {
-  let params = useParams()
+const User = () => {
+  const router = useRouter()
   const { sdk, isLoadingSDK } = Catalog.useNevermined()
   const [assets, setAssets] = useState<string[]>()
 
@@ -13,7 +13,7 @@ export const User = () => {
     const fetchAssets = async () => {
       const account = await sdk?.accounts?.list().then((list) => list[0])
       console.log(account.getId())
-      setAssets(await sdk?.assets?.consumerAssets(params.address!))
+      setAssets(await sdk?.assets?.consumerAssets(router.query.address as string))
     }
     console.log(assets)
     fetchAssets().catch(console.error)
@@ -23,9 +23,11 @@ export const User = () => {
     <>
       <UiLayout type="grid" align="center" direction="column">
         <UiDivider />
-        <UiText> address: {params.address!}</UiText>
-        <UiText>{!isLoadingSDK ? sdk.token.getAddress() : ''}</UiText>
+        <UiText> address: {router.query.address as string}</UiText>
+        <UiText>{!isLoadingSDK ? sdk.utils.token.getAddress() : ''}</UiText>
       </UiLayout>
     </>
   )
 }
+
+export default User
