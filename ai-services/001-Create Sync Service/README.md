@@ -33,7 +33,7 @@ deactivate
 
 ### Dependencies
 
-The dependencies needed in order to run your services are *fastapi*, and *uvicorn*. If you want to try  the async calls example, you would also *elasticsearch~=8.8.0*
+The dependencies needed in order to run your services are *fastapi*, and *uvicorn*.
 
 You can install this dependencies in your enviroment using *pip install* or you can use a setup.py file like the one included in this repository. If you use the setup.py file, you need to execute:
 
@@ -86,6 +86,9 @@ uvicorn service.sync_service:app --reload
 
 If you navigate to *http://localhost:8000/docs* in your browser, you will see the documentation generated automatically by FastAPI.
 
+<img width="1407" alt="API Docs" src="https://github.com/nevermined-io/tutorials/assets/45420891/33d7e40f-a821-49b8-8f48-4037c85bd5ff">
+
+
 To call the *Hello World* endpoint you just need to browse to *http://localhost:8000/*
 
 
@@ -137,9 +140,9 @@ In this example, we use the BackgroundTasks instance to close the bytes stream o
 
 ### Protecting your endpoints
 
-Now you are able to implement your own endpoints to call your AI model, but until this time your endpoints are open, so anyone can use them, so let's see how you can protect your endpoints with a token.
+Now you are able to implement your own endpoints to call your AI model, but until this time your endpoints are open, so anyone can use them, so let's see how you can protect your endpoints with a Bearer Token.
 
-First you need to indicate where is your token and how to validate. As a simple approach, you can use a enviroment variable to define the value of the token, and just compare if the request contains an Authorization Header wich value is the same
+First you need to indicate where is your token and how to validate it. As a simple approach, you can use an enviroment variable to define the value of the token, and just compare if the request contains an Authorization Header wich value is the same
 
 ```python
 bearer_scheme = HTTPBearer()
@@ -222,7 +225,7 @@ Once you are register, you will see an option to create an Authtoken. You will n
 
 ### Install and configure 
 
-Installing ngrok is really easy, you just need to pick the right choice for you [here](https://ngrok.com/download) and follow the instructions.
+Installing ngrok is really easy, you just need to pick the right version for your OS [here](https://ngrok.com/download) and follow the instructions.
 
 After the installation is completed, you need to add your Authtoken to the configuration:
 
@@ -246,12 +249,12 @@ You will see ngrok has created a new url to forward the request to your localhos
 Forwarding                    https://6557-213-94-33-247.ngrok-free.app -> http://localhost:8000 
 ```
 
-So now your AI services are accesible for anyone (as long as you keep your ngrok process running)
+So now your AI services are accesible to anyone (as long as you keep your ngrok process running)
 
 ```bash
 curl -H "Authorization: Bearer 1234" -X GET " https://6557-213-94-33-247.ngrok-free.app"
 ```
 
-Take into accout that any time you run ngrok to tunnel your local service, a new Url wil be generated, so if you want to test your AI service in a Nevermined App deployed in a testnet, remember to keep ngrok running until you finish all the testing in Nevermined.
+Take into account that any time you run ngrok to tunnel your local service, a new Url wil be generated, so if you want to test your AI service with Nevermined App, remember to keep ngrok running until you finish all the testing.
 
 
