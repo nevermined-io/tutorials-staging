@@ -52,7 +52,7 @@ To implement this sync service we will use FastAPI framework. You will see how e
 You need to install both *fastapi* and *uvicorn* dependencies.
 
 
-### Implement a GET method
+### Implement a GET method
 
 In the following examples we will show you some code snippets with the relevant pieces of code to implement these service. But you can see the full example in the sync_service.py file contained in this repository. 
 
@@ -89,7 +89,7 @@ If you navigate to *http://localhost:8000/docs* in your browser, you will see th
 To call the *Hello World* endpoint you just need to browse to *http://localhost:8000/*
 
 
-### Call your AI model with parameters
+### Call your AI model with parameters
 
 The next step is calling your AI service, using a couple of parameteres you get from the service request:
 
@@ -108,7 +108,7 @@ Really simple, we just defined an *ai-service* endpoint, that gets two parameter
 
 If you want to try it, you just need to put this in your browser: *http://localhost:8000/ai-service?param1=value1&param2=value2*
 
-### Use BackgroundTasks
+### Use BackgroundTasks
 
 Depending on the nature of your service you might need some way of executing some tasks once your endpoint returns the response. 
 For instance, imagine that your AI function returns a path where it placed a generated pdf file, and your endpoint returns the binary content of the file.
@@ -186,7 +186,7 @@ Try with this:
 curl -H "Authorization: Bearer 1234" -X GET "localhost:8000/"
 ```
 
-### Implementing POST methods
+### Implementing POST methods
 
 If you need, o prefer, to implement your endpoints as POST methods instead, FastAPI makes it quite easy:
 
@@ -230,7 +230,7 @@ After the installation is completed, you need to add your Authtoken to the confi
 ngrok config add-authtoken yourtokenhere
 ```
 
-### Tunneling the AI service
+### Tunneling the AI service
 
 First you need to start the AI service with *unicorn* as we have already seen.
 
