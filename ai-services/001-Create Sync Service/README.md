@@ -300,7 +300,7 @@ You will register your AI Service associated with this Subscription you are abou
 
  If you remember, when we create an endpoint with FastAPI, it generates a docs page located in *https://your-ngrok-url-free.app/docs*
 
- This is not the url where are going to use. If you access to this docs page, you'll see an link named */openapi.json*. If you click there in your browser you will see a json object which describe your service in OpenAPI standard. You will use the url of the page that shows this json.
+ This is not the url where are going to use. If you access to this docs page, you'll see a link named */openapi.json*. If you click there in your browser you will see a json object which describe your service in OpenAPI standard. You will use the url of the page that shows this json.
 
 
  <img width="551" alt="02 - openapi" src="https://github.com/nevermined-io/tutorials/assets/45420891/ea8b9a3a-1f80-46aa-bf6b-3d6aa989ba25">
