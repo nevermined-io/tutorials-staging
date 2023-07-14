@@ -350,7 +350,7 @@ You will register your AI Service associated with this Subscription you are abou
 
 Every user that have purchased your Subscription will be able to use your AI Service through Nevermined. Let's see how.
 
-#### JWT
+#### JWT
 
 As it was mentioned before in this document, the user does not know about the Bearer Token used to access your service and that you indicated in the creation process.
 
@@ -359,6 +359,9 @@ What Nevermined does under the hood is to custody your Token, as mentioned it is
 This JWT is showed, to the users who purchased the Subscription, in the *Integration Details* of the Asset details. (As owner of the service you can also have your own JWT).
 
 In this *Integration Details* section you can also see the Nevermined Proxy URL needed to access the service.
+
+![JWT](https://github.com/nevermined-io/tutorials/assets/45420891/e7a2c89f-c4ae-42eb-91f8-363981dc7802)
+
 
 
 #### Calling the service
