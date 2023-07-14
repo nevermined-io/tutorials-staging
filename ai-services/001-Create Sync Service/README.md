@@ -52,7 +52,7 @@ To implement this sync service we will use FastAPI framework. You will see how e
 You need to install both *fastapi* and *uvicorn* dependencies.
 
 
-### Implement a GET method
+### Implementing a GET method
 
 In the following examples we will show you some code snippets with the relevant pieces of code to implement these service. But you can see the full example in the sync_service.py file contained in this repository. 
 
@@ -92,7 +92,7 @@ If you navigate to *http://localhost:8000/docs* in your browser, you will see th
 To call the *Hello World* endpoint you just need to browse to *http://localhost:8000/*
 
 
-### Call your AI model with parameters
+### Calling your AI model with parameters
 
 The next step is calling your AI service, using a couple of parameteres you get from the service request:
 
@@ -111,7 +111,7 @@ Really simple, we just defined an *ai-service* endpoint, that gets two parameter
 
 If you want to try it, you just need to put this in your browser: *http://localhost:8000/ai-service?param1=value1&param2=value2*
 
-### Use BackgroundTasks
+### Using BackgroundTasks
 
 Depending on the nature of your service you might need some way of executing some tasks once your endpoint returns the response. 
 For instance, imagine that your AI function returns a path where it placed a generated pdf file, and your endpoint returns the binary content of the file.
@@ -217,7 +217,7 @@ If you want to test how you can register your AI service on Nevermined App, you 
 
 Of course the best solution here would be to deploy your service in a Cloud service like Aws, Gcloud, or in an on-premise infraestructure, etc. But to test it in a quick way you can use a tunneling tool. There are several free alternatives, but maybe the most popular is ngrok.
 
-### Create an account and generate Authtoken
+### Creating an account and generate Authtoken
 
 You can create a free account in [ngrok website](https://ngrok.com)
 
@@ -258,7 +258,7 @@ curl -H "Authorization: Bearer 1234" -X GET " https://6557-213-94-33-247.ngrok-f
 Take into account that any time you run ngrok to tunnel your local service, a new Url wil be generated, so if you want to test your AI service with Nevermined App, remember to keep ngrok running until you finish all the testing.
 
 
-## Register your AI Service in Nevermined App
+## Registering your AI Service in Nevermined App
 
 So you have implemented some endpoints to access your AI service, you have protected them and this endpoints are available to anyone who want to use them.
 
@@ -279,7 +279,7 @@ Once you have Metamask correctly configured, the next step is to create a brand 
 
 You will register your AI Service associated with this Subscription you are about to create. The process to create a new Subsccription is pretty straightforward, but [here](https://docs.nevermined.app/docs/tutorials/create-subscription) you can find some help to guide you.
 
-### Register your AI Service
+### Registering your AI Service
 
  So now that you have all set up and you have created a Smart Subscription, you can create a Web Service Asset to register your AI Service in Nevermined App.
 
@@ -345,4 +345,42 @@ You will register your AI Service associated with this Subscription you are abou
 
 
 
- ### Consume your AI Service
+ ### Consuming your AI Service
+
+
+Every user that have purchased your Subscription will be able to use your AI Service through Nevermined. Let's see how.
+
+#### JWT
+
+As it was mentioned before in this document, the user does not know about the Bearer Token used to access your service and that you indicated in the creation process.
+
+What Nevermined does under the hood is to custody your Token, as mentioned it is encrypted and nobody will be able to access to it, and generate an specific JWT (Json Web Token) to each user and service, so we can validate the user has permissions (meaning the user has purchased the subscription) to access that service.
+
+This JWT is showed, to the users who purchased the Subscription, in the *Integration Details* of the Asset details. (As owner of the service you can also have your own JWT).
+
+In this *Integration Details* section you can also see the Nevermined Proxy URL needed to access the service.
+
+
+#### Calling the service
+
+Use the service through Nevermined Proxy URL is pretty straighforward, you need to use the Proxy URL instead of the actual URL of your service, adding the specific endpoint you want to call and the parameters defined in that endpoint, and indicate and the Authorization Header with your JWT.
+
+For instance:
+
+```bash
+export NVM_TOKEN="eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..EW-BsszuYJLLuBylm6VPvw.zlGJQcCRjjG_m....srbCQpQ"
+
+curl -H "Authorization: $NVM_TOKEN" -X GET "https://5shbhhycwqvkqxjix1ubwnfss6fec5mpptaloqgx9agsqblyrt.proxy.goerli.nevermined.one/ai_service?param1=value1&param2=value2"
+```
+
+In case you have implemented your endpoints as a POST method, you can call in a similiar way than this example:
+
+```bash
+curl -H "Authorization: $NVM_TOKEN" -X POST "https://5shbhhycwqvkqxjix1ubwnfss6fec5mpptaloqgx9agsqblyrt.proxy.goerli.nevermined.one/ai_service"  \
+--header 'content-type: application/json' \
+--data '{"param1": "value1", "param2": "value2"} '
+```
+
+Obviously using curl is not mandatory to call your AI Service, it can be integrated into an Application implemented with Python, Java, Javascript, [Typescript](https://docs.nevermined.app/docs/tutorials/webservice-integration/#3b-using-typescript-to-integrate-the-web-service) , etc
+
+
