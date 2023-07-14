@@ -376,7 +376,7 @@ export NVM_TOKEN="eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..EW-BsszuYJLLu
 curl -H "Authorization: $NVM_TOKEN" -X GET "https://5shbhhycwqvkqxjix1ubwnfss6fec5mpptaloqgx9agsqblyrt.proxy.goerli.nevermined.one/ai_service?param1=value1&param2=value2"
 ```
 
-In case you have implemented your endpoints as a POST method, you can call in a similiar way than this example:
+In case you have implemented your endpoints as a POST method, you can call them like this:
 
 ```bash
 curl -H "Authorization: $NVM_TOKEN" -X POST "https://5shbhhycwqvkqxjix1ubwnfss6fec5mpptaloqgx9agsqblyrt.proxy.goerli.nevermined.one/ai_service"  \
