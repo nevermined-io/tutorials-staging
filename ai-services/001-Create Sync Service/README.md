@@ -215,7 +215,7 @@ def ai_service(aiRequest: AIRequest):
 
 If you want to test how you can register your AI service on Nevermined App, you will need a way to make your service accesible outside your laptop, if you are running the service locally.
 
-Of course the best solution here would be to deploy your service in a Cloud service like Aws, Gcloud, or in an on-premise infraestructure, etc. But to test it in a quick way you can use a tunneling tool. There are several free alternatives, but maybe the most popular is ngrok.
+Of course the best solution here would be to deploy your service on a Cloud service like Aws, Gcloud, or on an on-premise infraestructure, etc. But to test it in a quick way you can use a tunneling tool. There are several free alternatives, but maybe the most popular is ngrok.
 
 ### Creating an account and generate Authtoken
 
