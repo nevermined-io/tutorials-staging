@@ -258,7 +258,7 @@ curl -H "Authorization: Bearer 1234" -X GET " https://6557-213-94-33-247.ngrok-f
 Take into account that any time you run ngrok to tunnel your local service, a new Url wil be generated, so if you want to test your AI service with Nevermined App, remember to keep ngrok running until you finish all the testing.
 
 
-## Register your AI Service in Nevermined App
+## Register your AI Service in Nevermined App
 
 So you have implemented some endpoints to access your AI service, you have protected them and this endpoints are available to anyone who want to use them.
 
@@ -268,7 +268,7 @@ In order to test and learn how you can use Nevermined App, we provide a test dep
 
 You can access to this test version of Nevermined App [here](https://goerli.nevermined.app/en)
 
-### Before you register your Service
+### Before you register your Service
 
 We recommend you to take a look to the different [guides and tutorials we have about Nevermined App](https://docs.nevermined.app/docs/getting-started/)
 
@@ -289,8 +289,10 @@ You will register your AI Service associated with this Subscription you are abou
 
  In this first step you can describe the purpose of your AI Service and add some tags you consider relevants. The tags are used by the users in the Marketplace to find datasets and service of their interest.
 
+![01 - describe](https://github.com/nevermined-io/tutorials/assets/45420891/fe6c0b77-58ca-4bbd-a1fb-d1b4155f3a95)
 
- #### Details
+
+ #### Details
 
  In the second step you need to provide the endpoints URLs of your AI Service, and in case you have protected them with a Bearer Token, you need to facilitate it. Take into account that this token will be sent and stored encrypted and no body will be able to access to this token.
 
@@ -300,7 +302,14 @@ You will register your AI Service associated with this Subscription you are abou
 
  This is not the url where are going to use. If you access to this docs page, you'll see an link named */openapi.json*. If you click there in your browser you will see a json object which describe your service in OpenAPI standard. You will use the url of the page that shows this json.
 
+
+ <img width="551" alt="02 - openapi" src="https://github.com/nevermined-io/tutorials/assets/45420891/ea8b9a3a-1f80-46aa-bf6b-3d6aa989ba25">
+
+
+
  So the formulary should look similar to this one
+
+![03 - details](https://github.com/nevermined-io/tutorials/assets/45420891/fe7eddc8-bfcc-411b-9309-2e406b38421e)
 
 
  #### Integration
@@ -309,21 +318,31 @@ You will register your AI Service associated with this Subscription you are abou
 
  Also, you can add an image as a cover for your service.
 
+![04 - integration](https://github.com/nevermined-io/tutorials/assets/45420891/967ef8f3-fa85-4fb2-8083-a323f72dfaea)
 
- #### Subscription
+ #### Subscription
 
  In this step you associate the service with the Smart Subscription you had created. Any user that wants yo use your service will need to purchase this Subscription before.
+
+ ![05 - subscription](https://github.com/nevermined-io/tutorials/assets/45420891/ba2dbbac-2f83-4cc7-904c-2f7d8e18b29b)
 
 
  #### Review and create
 
  In the last step you can see all the information you have provided about your service. Take your time to be sure all the information is correct, and click in the *Create* button.
 
+ ![06 - review](https://github.com/nevermined-io/tutorials/assets/45420891/160c55d1-add3-4407-af1c-0f385dec9dc5)
+
+
  During the process of asset creation, Metamask will ask you to sign and approve some messages and transactions. That's completely normal because Nevermined needs to send some transactions to the network, in order to register your asset on-chain. 
 
  When the process is finished, you will be able to access the details of your new Service Asset (you can also access anytime using the Dashboard section of the App).
 
  As it was mentioned before, in the Service details you can access to the description of the endpoints.
+
+ ![07 - endpoints](https://github.com/nevermined-io/tutorials/assets/45420891/f531e19a-4098-4071-a411-178a99b01159)
+
+
 
 
  ### Consume your AI Service
