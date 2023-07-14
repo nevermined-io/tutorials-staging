@@ -258,3 +258,72 @@ curl -H "Authorization: Bearer 1234" -X GET " https://6557-213-94-33-247.ngrok-f
 Take into account that any time you run ngrok to tunnel your local service, a new Url wil be generated, so if you want to test your AI service with Nevermined App, remember to keep ngrok running until you finish all the testing.
 
 
+## Register your AI Service in Nevermined App
+
+So you have implemented some endpoints to access your AI service, you have protected them and this endpoints are available to anyone who want to use them.
+
+In this section we will show you how you can share  your service with the Community in a safety way, and even monetize them, if you want, using a Nevermined Smart Subscription.
+
+In order to test and learn how you can use Nevermined App, we provide a test deployment that uses Arbitrum Goerli testnet, where you can try the different features provided by Nevermined.
+
+You can access to this test version of Nevermined App [here](https://goerli.nevermined.app/en)
+
+### Before you register your Service
+
+We recommend you to take a look to the different [guides and tutorials we have about Nevermined App](https://docs.nevermined.app/docs/getting-started/)
+
+Before starting using Nevermined you will need to install and config Metamask in your browser. [See the instructions here](https://docs.nevermined.app/docs/tutorials/metamask/), [here](https://docs.nevermined.app/docs/tutorials/metamask-networks/#arbitrum-goerli-testnet), and [here](https://docs.nevermined.app/docs/tutorials/metamask-tokens/), 
+
+
+Once you have Metamask correctly configured, the next step is to create a brand new [Smart Subscription](https://docs.nevermined.app/docs/getting-started/smart-subscriptions)
+
+You will register your AI Service associated with this Subscription you are about to create. The process to create a new Subsccription is pretty straightforward, but [here](https://docs.nevermined.app/docs/tutorials/create-subscription) you can find some help to guide you.
+
+### Register your AI Service
+
+ So now that you have all set up and you have created a Smart Subscription, you can create a Web Service Asset to register your AI Service in Nevermined App.
+
+ In the New Asset option you have already used to create the Subscription, choose the options Web Service. This will lead you to a multi step formulary where you can describe and configurate your service.
+
+ #### Description
+
+ In this first step you can describe the purpose of your AI Service and add some tags you consider relevants. The tags are used by the users in the Marketplace to find datasets and service of their interest.
+
+
+ #### Details
+
+ In the second step you need to provide the endpoints URLs of your AI Service, and in case you have protected them with a Bearer Token, you need to facilitate it. Take into account that this token will be sent and stored encrypted and no body will be able to access to this token.
+
+ Instead of define the endpoints one by one manually, we can use the OpenAPI integration to do this automatically. 
+
+ If you remember, when we create an endpoint with FastAPI, it generates a docs page located in *https://your-ngrok-url-free.app/docs*
+
+ This is not the url where are going to use. If you access to this docs page, you'll see an link named */openapi.json*. If you click there in your browser you will see a json object which describe your service in OpenAPI standard. You will use the url of the page that shows this json.
+
+ So the formulary should look similar to this one
+
+
+ #### Integration
+
+ In this section you can provide some information about how to integrate and use your service. Take into account that if you used the OpenAPI integration in the previous step, the users interest in your service will see the description of the endpoints, like the parameters and the responses,  so you don't need to repeat that information here.
+
+ Also, you can add an image as a cover for your service.
+
+
+ #### Subscription
+
+ In this step you associate the service with the Smart Subscription you had created. Any user that wants yo use your service will need to purchase this Subscription before.
+
+
+ #### Review and create
+
+ In the last step you can see all the information you have provided about your service. Take your time to be sure all the information is correct, and click in the *Create* button.
+
+ During the process of asset creation, Metamask will ask you to sign and approve some messages and transactions. That's completely normal because Nevermined needs to send some transactions to the network, in order to register your asset on-chain. 
+
+ When the process is finished, you will be able to access the details of your new Service Asset (you can also access anytime using the Dashboard section of the App).
+
+ As it was mentioned before, in the Service details you can access to the description of the endpoints.
+
+
+ ### Consume your AI Service
