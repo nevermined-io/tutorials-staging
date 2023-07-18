@@ -1,8 +1,6 @@
 [![banner](https://raw.githubusercontent.com/nevermined-io/assets/main/images/logo/banner_logo.png)](https://nevermined.io)
 
-# How to publish your AI 
-
-## Introduction
+# How to expose an AI agent and publish it into Nevermined
 
 In the following sections we will show how you can easily expose your AI model through web services endpoints. 
 With this endpoints up & running you will be able to register this service in Nevermined so you can safely share, and monetize, your AI model
@@ -86,8 +84,7 @@ uvicorn service.sync_service:app --reload
 
 If you navigate to *http://localhost:8000/docs* in your browser, you will see the documentation generated automatically by FastAPI.
 
-<img width="1407" alt="API Docs" src="https://github.com/nevermined-io/tutorials/assets/45420891/33d7e40f-a821-49b8-8f48-4037c85bd5ff">
-
+[API Docs](https://docs.nevermined.app/assets/images/09_01_APIDocs-dfb778d1ba6bacec10919f1bb4f9af80.png)
 
 To call the *Hello World* endpoint you just need to browse to *http://localhost:8000/*
 
@@ -289,7 +286,7 @@ You will register your AI Service associated with this Subscription you are abou
 
  In this first step you can describe the purpose of your AI Service and add some tags you consider relevants. The tags are used by the users in the Marketplace to find datasets and service of their interest.
 
-![01 - describe](https://github.com/nevermined-io/tutorials/assets/45420891/fe6c0b77-58ca-4bbd-a1fb-d1b4155f3a95)
+![Description](https://docs.nevermined.app/assets/images/04_01_New_Subscription-6d5e2392d6434fa34a7ff3ce974f0b85.png)
 
 
  #### Details
@@ -302,14 +299,12 @@ You will register your AI Service associated with this Subscription you are abou
 
  This is not the url where are going to use. If you access to this docs page, you'll see a link named */openapi.json*. If you click there in your browser you will see a json object which describe your service in OpenAPI standard. You will use the url of the page that shows this json.
 
-
- <img width="551" alt="02 - openapi" src="https://github.com/nevermined-io/tutorials/assets/45420891/ea8b9a3a-1f80-46aa-bf6b-3d6aa989ba25">
-
+ ![Open API](https://docs.nevermined.app/assets/images/09_02_ServiceDocs-c690f8980e1e7b3562aae992778a383d.png)
 
 
  So the formulary should look similar to this one
 
-![03 - details](https://github.com/nevermined-io/tutorials/assets/45420891/fe7eddc8-bfcc-411b-9309-2e406b38421e)
+![Details](https://docs.nevermined.app/assets/images/05-02-Webservice-Details-d5fd389a609a57703e134c3736335fad.png)
 
 
  #### Integration
@@ -318,21 +313,18 @@ You will register your AI Service associated with this Subscription you are abou
 
  Also, you can add an image as a cover for your service.
 
-![04 - integration](https://github.com/nevermined-io/tutorials/assets/45420891/967ef8f3-fa85-4fb2-8083-a323f72dfaea)
+![Integration](https://docs.nevermined.app/assets/images/05-03-Webservice-Integration-a6070f6b7b45b6d54b70852b31d29ffe.png)
 
  #### Subscription
 
  In this step you associate the service with the Smart Subscription you had created. Any user that wants yo use your service will need to purchase this Subscription before.
 
- ![05 - subscription](https://github.com/nevermined-io/tutorials/assets/45420891/ba2dbbac-2f83-4cc7-904c-2f7d8e18b29b)
+ ![Subscription](https://docs.nevermined.app/assets/images/05-04-Webservice-Plan-b48ccf4cd3ec572bc2b7354e8d9d2515.png)
 
 
  #### Review and create
 
  In the last step you can see all the information you have provided about your service. Take your time to be sure all the information is correct, and click in the *Create* button.
-
- ![06 - review](https://github.com/nevermined-io/tutorials/assets/45420891/160c55d1-add3-4407-af1c-0f385dec9dc5)
-
 
  During the process of asset creation, Metamask will ask you to sign and approve some messages and transactions. That's completely normal because Nevermined needs to send some transactions to the network, in order to register your asset on-chain. 
 
@@ -340,13 +332,10 @@ You will register your AI Service associated with this Subscription you are abou
 
  As it was mentioned before, in the Service details you can access to the description of the endpoints.
 
- ![07 - endpoints](https://github.com/nevermined-io/tutorials/assets/45420891/f531e19a-4098-4071-a411-178a99b01159)
-
-
+ ![Endpoints](https://docs.nevermined.app/assets/images/09_03_ServiceEndpoints-c1738bc69f72c14502300f559dd67425.png)
 
 
  ### Consuming your AI Service
-
 
 Every user that have purchased your Subscription will be able to use your AI Service through Nevermined. Let's see how.
 
@@ -360,8 +349,7 @@ This JWT is showed, to the users who purchased the Subscription, in the *Integra
 
 In this *Integration Details* section you can also see the Nevermined Proxy URL needed to access the service.
 
-![JWT](https://github.com/nevermined-io/tutorials/assets/45420891/e7a2c89f-c4ae-42eb-91f8-363981dc7802)
-
+![JWT](https://docs.nevermined.app/assets/images/08-04-Service-JWT-440ebd0cb99b5cf2395b5e33bf51b875.png)
 
 
 #### Calling the service
@@ -383,7 +371,3 @@ curl -H "Authorization: $NVM_TOKEN" -X POST "https://5shbhhycwqvkqxjix1ubwnfss6f
 --header 'content-type: application/json' \
 --data '{"param1": "value1", "param2": "value2"} '
 ```
-
-Obviously using curl is not mandatory to call your AI Service, it can be integrated into an Application implemented with Python, Java, Javascript, [Typescript](https://docs.nevermined.app/docs/tutorials/webservice-integration/#3b-using-typescript-to-integrate-the-web-service) , etc
-
-
