@@ -84,7 +84,7 @@ uvicorn service.sync_service:app --reload
 
 If you navigate to *http://localhost:8000/docs* in your browser, you will see the documentation generated automatically by FastAPI.
 
-[API Docs](https://docs.nevermined.app/assets/images/09_01_APIDocs-dfb778d1ba6bacec10919f1bb4f9af80.png)
+![API Docs](https://docs.nevermined.app/assets/images/09_01_APIDocs-dfb778d1ba6bacec10919f1bb4f9af80.png)
 
 To call the *Hello World* endpoint you just need to browse to *http://localhost:8000/*
 
