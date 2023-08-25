@@ -1,0 +1,604 @@
+
+
+AthenaDAO
+Decentralized collective to fund women’s reproductive health research and drug discovery.
+https://www.athenadao.co/ 
+
+VitaDAO  
+VitaDAO is a DAO collective for funding longevity research. Our core mission is the acceleration of research and development (R&D) in the longevity space and the extension of human life and healthspan. To achieve this, VitaDAO collectively funds early-stage research projects and spins out startups to commercialize them. It also aims to improve longevity awareness through both scientific and general audience publishing initiatives. 
+Website with funded projects, explainers etc. https://www.vitadao.com/ 
+All links: https://vitadao.com/links
+Governance Proposals: https://gov.vitadao.com/
+Video Podcasts etc. https://www.youtube.com/c/vitadao
+Audio Podcasts: https://anchor.fm/vitadao
+Articles: https://vitadao.medium.com/
+Monthly summary: http://newsletters.vitadao.com/
+Paid on-demand peer review services: The Longevity Decentralized Review (TLDR) and Proof of Peer Review (PoP Review) for longevity research and general biomedical research, respectively.
+The Longevity Journal (link TBD)
+
+MedDAO
+MedDAO creates new incentives and systems for a global, distributed medical knowledge network leveraging a highly-engaged community of public health stakeholders who are co-owners of the organization.
+Discord: https://discord.gg/qwWATcETDq
+Documentation: https://docs.meddao.xyz/
+Twitter: https://twitter.com/MedDAO_xyz
+
+Open Science DAO 
+We're a community-owned open science ecosystem that unlocks data silos, revolutionizes collaboration, and democratizes funding.  
+Twitter: @OpScientia 
+News: https://pulse.opsci.io/ 
+Resources: 
+Shady El Damaty DeSci Stack at MR Hack-a-thon
+Shady El Damaty Opscientia at OceanDAO Sailor’s Lounge
+Background: Sarah Hamburg Unstoppable Podcast (note - no longer with OpScientia, but this podcast interview was great IMHO) 
+Opsciverse Project from the Opscientia DAO: "Portal to the world of decentralised laboratories. Powered by the Open Science Framework and running on smart contracts for autonomous research workflows" 
+Jocelynn’s notes: some of the better conversations around open science and scientific publishing happen on this server. A lot of good chatter around articles related to open science. Focus seems to be decentralized file storage. 
+
+The Science DAO 
+From their whitepaper: A decentralized think tank to foster growth and incubate scientific ideas. DeFi community/DAO to fund scientific research, primarily biomedical.
+		Currently seeking projects for funding 
+Twitter: https://twitter.com/TheScienceDAO 
+Deck: https://thesciencedao.io/files/deck.pdf 
+Discord: https://discord.gg/4pByE4Ft7r 
+
+GenomesDAO 
+GenomesDAO strives to meet the increasing expectations of research organizations, institutions as well as customers for the security of genomic data and the quality of research workflow. In order to increase the democratization and decentralization of genomic studies, they focus on combining cutting-edge technologies such as AMD’s SEV, blockchain and decentralized finance.
+		DAO docs - https://genomes.gitbook.io/genomes.io-docs/ 
+Twitter: https://twitter.com/GenomesDAO 
+	Discord - https://discord.com/invite/3DaD2na4XJ 
+Jocelynn’s notes: I haven’t been in their discord yet, but have heard them speak about the project. Seems DeFi focused.
+Note from Alan Hyndman: I am involved in the GenomesDAO project, feel free to drop into the Discord to ask any questions.
+
+ResearchHub DAO 
+Our mission is to accelerate the pace of scientific research. ResearchHub provides an open forum where users can port in scientific publications, upload preprints through our notebook feature, generate scientific bounties and discuss science (like Reddit) incentivised by ResearchCoin. As an alternative to scientific journals, ResearchHub contains hubs of all genres of scientific research. 
+		Discord: https://discord.gg/researchhub
+		ResearchHub Platform: https://www.researchhub.com/
+		Twitter: https://twitter.com/ResearchHub
+		Youtube: https://www.youtube.com/channel/UCU4kRS13JPo1hIPNV6eONmg
+
+CRISPR DAO 
+CRISPR DAO is building a decentralized organization to fund cutting edge CRISPR research to advance potential therapies and Ag-tech solutions.
+Join the Discord: https://discord.com/invite/NWGqnU6Zjt
+Led by Nat Harooni: https://twitter.com/NatHarooni 
+
+LabDAO 
+The future of biomedical science is an open, community-run network of laboratories. CRO/Marketplace focus.  
+Twitter: https://twitter.com/lab_dao 
+Resources: 
+Arye & Niklas–Building a labDAO for web3 Biotech 
+Niklas Rindtorff–Graph Based Protocols 
+UltraRare podcast episode featuring LabDAO; also here. 
+Monthly updates: summary of what happened
+
+PsyDAO
+PsyDAO is a decentralised organisation with the goal of funding research at the intersection of psychedelics and mental health.
+Twitter: https://twitter.com/PsyDAO_
+		Discord: https://discord.gg/hUH4MWxVFx 
+		Telegram: https://t.me/+KvFGR2sVlOg2NTM0
+		PsyDAO video: https://youtu.be/QInIDUDf_YQ?t=3797 
+
+DeSciWorldDAO
+DeSciWorld aims to connect the decentralised and scientific communities to help further the mission of Decentralising Science. The DAO coordinates treasury expenditure and future development goals.
+		Twitter: https://twitter.com/DeSciWorld 
+		Discord: https://discord.gg/jnEUqVH8xv 
+
+BioDAO
+BioDAO aims to be a collective funding DAO for biotech startups and drug discovery. 
+		Twitter: https://twitter.com/biodaoxyz 
+		Discord: https://discord.com/invite/7yMtZwp7Rq
+
+NeuraDAO
+NeuraDAO is a community-governed, decentralized platform for neurotech research and intellectual property. 
+		Twitter: https://twitter.com/neuradao 
+Website: https://neuradao.co/
+Discord: https://discord.com/invite/HnMQsGP8jB
+
+Cherubs DAO
+NFT funded, DAO governed collective investing in accelerating solutions & cures to Alzheimer’s disease and advancing brain wellness and longevity. 80% of funding dedicated to investments for ROI and impact, and 20% to fund primary research grants.
+Website: https://cherubsdao.com/
+Twitter: https://twitter.com/CherubsDao
+One-pager: https://cherubsdao.com/downloads/20211203_Cherubs_DAO_One_Pager.pdf
+
+FrontierDAO 
+FrontierDAO is a Research and Development DAO for science and engineering that looks to incubate promising innovation in their focus areas of fusion energy, space exploration, and climate solutions. The end goal is to catalyze commercialization of the most promising technologies. They raise funds through membership and their NFT collection, available on OpenSea. Their NFT collections include IP-NFTs which are foundational to their scientific publishing platform, FrontierRegistry, which is an open publishing platform for scientists, academia, engineers and researchers who can opt to self-publish and choose to mint their research papers as NFTs. FrontierRegistry is a user-owned platform.     
+Whitepaper 
+NFT Collection 
+Linktree 
+Discord: https://discord.com/invite/UQVVw8QWrV 
+Twitter: https://twitter.com/FrontierDAO 
+
+Research Collective
+The Research Collective is a 501c(3) / DAO performing decentralized trials and ‘adversarial research’, often going against the status quo. It acts as a bridge between the ‘biohackers’ and crypto community. 
+Telegram:  https://t.me/+hDgQ1cZ_jZQ3MDgx
+
+ValleyDAO
+Our vision is to support the transition to a sustainable bioeconomy by funding democratically elected academic research and collectively govern the generated IP.
+		Announcement article: valleydao.medium.com/5bc470a58482 
+		Discord: discord.gg/APD46yZD7E 
+		Twitter: twitter.com/valley_dao 
+
+HairDAO
+HairDAO, a decentralized autonomous organization in search of a cure for hair loss. Hair loss remains one of the most pervasive medical conditions globally: 80% of men and 50% of women will experience noticeable hair loss in their lifetimes, with over 95% of cases caused by androgenic alopecia (male and female pattern baldness). 	
+Whitepaper
+Website: https://www.hairdao.xyz/ 
+Discord: https://discord.com/invite/nEKD4qBPSU 
+Twitter: https://twitter.com/HairDAO_  
+
+CureDAO
+CureDAO is an alliance of digital health innovators working to minimize suffering in the universe by accelerating clinical discovery. This is done through a community-owned rewards collaboration over competition. The end result is the discovery of how millions of factors like foods, drugs, and supplements affect human health. 
+
+DeNature DAO 
+We are a decentralized science DAO that aims to empower STEM innovators using blockchain technology. 
+
+OpenNMN
+OpenNMN is a DAO formed to make the supplement NMN accessible with community based biotech
+
+Antidote DAO 
+AntidoteDAO is an altruistic Web3 DAO Dedicated to Funding Various Cancer Initiatives
+
+Reputable DAO 
+Reputable DAO is a biohacking and personalized wellness community that allows members to sell their data to third parties over places like the Ocean marketplace. 
+Whitepaper: https://docs.reputable.health/product-docs/ 
+
+Future Foods DAO 
+Future Foods DAO is a community-owned collective funding early-stage alternative protein open-source research. We identify and fund the most promising foundational alternative protein research. We support early stage research and facilitate commercialization. Members can join Future Foods DAO by purchasing tokens or earning them through contributions of work or Intellectual Property. 
+
+Immortality
+Immortality is a cryptocurrency designed to bring scientifically proven, peer reviewed age prevention and reversal into reality. Envisioning the treatment of aging in a world-class clinic using proven and novel therapies such as working with TensorFlow machine learning for prediction, improved diagnostics and imaging analysis, in vivo gene therapy, stem cells and in vivo partial reprogramming. Immortality's development team researches and works on three essential areas of longevity; lifestyle, pharmacology, and clinical. Contributing to peer-review and improve existing therapies and brainstorming novel therapies.
+
+Homepage: https://imt.cx
+Whitepaper: https://imt.cx/assets/pdf/whitepaper.pdf
+
+Love Health
+
+The Love DAO and Love Token represent the first decentralized approach to People-Powered Pharma™. Through the Love DAO, members of the community can submit clinical trial proposals, and share in the upside when treatments are launched. Our expert blockchain team has experience building unicorn startups and launching world-changing DAOs.
+
+Documentation: https://trylove.wpengine.com/wp-content/uploads/2022/09/litepaper.pdf 
+Discord: https://discord.gg/love-dao
+
+
+Decentralized Science Ecosystems
+We wanted to create a category for projects that are tackling multiple problems at once, such as decentralized financing of science and scientific publishing tools. These projects include multiple sectors but are not necessarily operating as DAOs. 
+
+Bio.xyz
+A Molecule initiative funding decentralized science and biotech projects, and providing hands-on support from legal to tech. Funded VitaDAO, LabDAO, ValleyDAO, PsyDAO and more soon. Apply here for up to $100k: https://www.bio.xyz/.
+
+Halogen
+A platform/set of protocols aiming to replace the journal monopoly with a self-organizing network of self-sufficient scientific communities. Publishing, review, documentation, funding is all done at the community level. This model will solve the epistemic issues endemic to journal science and restructure the scientific epistemic engine to produce an accurate, representative, and usable knowledge base. 
+Whitepaper: Halogen- theoretical background
+Website: https://halogen.cloud/
+Point of contact: natashaaasmi@gmail.com or Twitter DM @AsmiNatasha
+
+SCINET
+SCINET is a decentralized life sciences ("DeSci") research and investment platform that revolutionizes the way people do and support science. Powered by blockchain technologies, SCINET allows retail and institutional investors to invest directly in life sciences research and technology with security and authenticity.
+		Core team: Jordan Smith, Hank Brigham 
+Linkedin: https://www.linkedin.com/company/scinet-us/ Tw: https://twitter.com/SCINET_INC 
+
+DeSci Foundation 
+We are an independent think tank of leading scientists and web3 pioneers, dedicated to exploring the potential of applying web3 technologies to the scientific ecosystem. Our mission is to support high-quality science by: 
+Thinking carefully about the potential opportunities and risks of applying web3 technologies to the scientific ecosystem.
+Bringing scientists & web3 pioneers together. 
+Supporting initiatives that have the potential to improve scientific progress.
+Creating new ways to finance and incentivize high-quality, replicable science.
+Core team: Christopher Hill, Sina Iman, Philipp Koellinger, Erik Van Winkle
+Twitter: https://twitter.com/DesciFoundation 
+
+Gridcoin
+Gridcoin is a science-focused blockchain which uses minting protocols and fee-based mechanisms to incentivize computational contribution to distributed computing projects (on the BOINC network) working on various areas of scientific research, raise funds for research, and verify publication ownership.
+Twitter: https://twitter.com/GridcoinNetwork 
+Discord: https://discord.gg/7EnbsJCWXD 
+
+The DeSci Academy
+Onboarding non-technical users into science to create the next generation of scientists. 
+We find and train passionate, driven and curious individuals who want to contribute to science but lack the credentials.
+		Twitter: https://twitter.com/TheDesciAcademy 
+
+The Innovation Game
+The golden era of hardware speedups is coming to an end. This has profound ramifications for our scientific & technological progress, as we are operating on a paradigm of solving increasingly complex computational problems.   
+
+We predict the coming era will be one where there is immense value in improving the efficiency of foundational scientific algorithms, as they will determine which new scientific and technological advancements are tractable. Pre-empting this future, we are applying a framework of crypto-economics to address the market failure related to funding and transparency around the innovation of such algorithms. We call this framework The Innovation Game.
+		Litepaper: Link
+		Discord: https://discord.gg/YTJGVpZD 
+
+deScier 
+Previously SciDAO, now merged with CRDAO (a contract research organization DAO)
+
+An ecosystem to integrate and foster synergies in decentralized science actions to expand the possibilities of collaboration in the various science-related initiatives. Editorial work for publishing scientific papers with shared financial gains continues being one of the important arms in this project. co-Led by: Maria Goreti Freitas (@goreti_freitas on Twitter) and Danilo Melo (@drdanilogestao on Twitter).
+Mirror
+Twitter: https://twitter.com/@desciers  
+Discord: https://discord.gg/Z6U9P28YtV
+Instagram: https://instagram.com/sci.dao?igshid=YmMyMTA2M2Y=
+Telegram Early Adopters Testing group: https://t.me/+KMddKMNNRwY0YTMx
+
+
+Resources for DAOs
+Building and running a DAO
+DAO Resources
+
+Scientific Publishing
+Teams, projects and companies trying to make improvements to how and where science gets published. Some of the themes include: incentivized peer review, micro-publications, and platforms where scientists can receive donations for their contributions. 
+
+Longevity Review by VitaDAO
+A platform that provides funding for researchers to review each other's work. It addresses critical issues with academic journals:
+Website: https://longevity.review/about
+ 
+Agora Labs
+A platform where scientific publications and their researchers can be ‘invested in’. Actually building out the platform - expected to release ~ September 1 
+Website: https://www.agora-labs.com/ 
+LinkedIn: https://www.linkedin.com/company/agoralabscom/about/ 
+
+Planck 
+Manuscripts as NFTs by Matthew Stephenson https://www.p1anck.com/
+Hasn’t been a lot of activity recently as of 05/2022 
+Interview with Matt on The Unstoppable Podcast 
+Interview with Matt on SciBetter
+
+Atoms.org
+Smart Contracts - https://atoms.org/scientiae#smart-research-contracts
+Led by Darren. Many good essays here  
+Twitter: https://twitter.com/atoms_org/status/1409574011244204032
+
+Ants Review
+Incentivized peer reviews w/ @AntsReview (since April 2020)
+Led by Bianca Trovò: https://twitter.com/bianca_troveaux 
+Not a lot of recent activity
+		MVP: https://ants-review.on.fleek.co
+Paper: https://link.springer.com/chapter/10.1007%2F978-3-030-71593-9_2
+
+
+
+Discourse Graph
+Documentation
+
+Flashpub.io
+A platform for micro publications and articles 
+Led by Nate Jacobs - also active in the Blockchain for Science Telegram group 
+Link to Medium article
+
+
+
+TalentDAO 
+
+sci2sci
+sci2sci develops a “scientist-to-scientist” platform to conveniently store, share and search for research data. An electronic lab notebook conveniently paired with a publishing platform allows to easily release research data into open access - whenever it’s ready - in one click. Additionally, the search engine tailored specifically for datasets allows for advanced search options, such as finding datasets that contain the same information using search by structural similarity. It indexes data found both on the sci2sci platform and on external services such as Zenodo and FigShare.
+		LinkedIn: https://www.linkedin.com/company/sci2sci/ 
+		Twitter: https://twitter.com/sci2science 
+
+
+IP-NFTs
+What exactly are IP-NFTs? I recommend watching the following video and reading Tyler Gelato’s article linked below as a primer:
+	Video presentation: https://twitter.com/Molecule_to/status/1458455154382946306
+IP-NFTs for Researchers: A New Biomedical Funding Paradigm by Tyler Golato
+Molecule’s Biopharma IP-NFTs - A Technical Description by Clemens Ortlepp
+IP/NFT Possibilities by Tristan Roberts
+Molecule’s IP NFT collection 
+
+Decentralized Biotech / Biopharma 
+
+A Guide to Decentralized Biotech 
+By Jocelynn Pearl, published in Future (a16z) 4-20-2022 
+
+Perlara PBC
+Led by Ethan Perlstein
+Perlara employs consultants that write work plans and perform project management for the development of therapies for families and nonprofit foundations seeking cures for rare diseases. It is a distributed biotech in the sense that it employs scientists around the world to work together to build ‘cure roadmaps’ for identifying new treatments for patients and foundations. 
+
+Vibe Bio 
+Led by Joshua Forman and Alok Tayi 
+Vibe hopes to bring power and agency to patient communities by building out a DAO toolbox of sorts so that a given patient community could organize via a DAO, co-own and co-develop therapeutics to treat the illness they are suffering from. (Please note that this is Jocelynn’s ‘take’ and could be misleading, company is under development)
+
+Molecule 
+Led by Tyler Golato & Paul Kohlhaas 
+Molecule was inspired by the open science movement and open drug development that was happening in certain patient communities. The idea was to utilize blockchain tools to help advance and fund early stage drug development. To that end, the company has made several savvy decisions that have advanced the DeSci space, including ideating IP-NFTs, NFTs tied to intellectual property (think, a drug or research-based IP), and launching the VitaDAO community to fund longevity research. They continue to seed new DAOs and help advance the funding of early stage drug development. Their marketplace currently boasts around 60 research projects available for funding. 
+Visit the Molecule Discovery dapp
+
+
+BioDAO
+BioDAO aims to be a collective funding DAO for biotech startups and drug discovery. Led by Rushi Trivedi and Alex Pustov. 
+Discord community is still somewhat small. Project has been going on for 7+ months and the team has chosen to build mostly with core team and not community involvement. Similar to Molecule, the goal is to own biotech assets developed by DAO-funded projects. 
+		Twitter: https://twitter.com/biodaoxyz 
+Discord: https://discord.com/invite/7yMtZwp7Rq
+
+
+Phage Directory
+Learn more about Phage Directory in this UltraRare Podcast episode with the founders: https://rss.com/podcasts/ultrarare/452751/ 
+Led by Jessica Sacher and Jan Zheng. Phage Directory was started from the observation that clinicians and scientists were seeking cures to antibiotic-resistant infections. Phage Directory was formed with a simple solution: building out a more concrete network of the people who might have the tools to help (in this case, phages). To date, the group has helped with three different cures. They continue to grow. Great model and simple template for decentralized cure discovery. 
+
+
+
+Recerca - Tokenizing Research 
+Led by David Hunt, Dr. Sean Young, & Tyler Ruben. Recerca first got momentum after the team won 2nd prize in the Hedera X Filecoin Grant, for an application centered around solving data integrity problems, crowdfunding research, and NFT based participant rewards. So far the team has made great strides with its premier study completed in November 2021, and the user facing application that distributes participant NFT rewards is currently in closed alpha.
+
+
+Crowd Funded Cures
+Could a pay-for-success model bring certain off-patent treatments and repurposed generic drugs to the forefront and into patient hands without patents? That is the dream of Crowd Funded Cures, led by a team including Savva Kerdemelidis, Amir Amraie, Andrew Horton, Nick Fiorenza, Ariella Coler-Reilly, Zack West, & Spyridon Antonopoulos, Kash Nouroozi, Zan Lowe-Skilern, Dominic Nutt, Daniel Dohne. 
+Article explainer of the model
+		Blog: https://crowdfundedcures.org/blog/
+Twitter: https://twitter.com/CrowdFundedCure
+Facebook: https://www.facebook.com/crowdfundedcures/
+Gitcoin GR15 Round 
+Discord: https://discord.gg/6tFG8RDygW
+
+
+LabDAO 
+The future of biomedical science is an open, community-run network of laboratories. CRO/Marketplace focus.  LabDAO hopes to build an on-chain marketplace for wet and dry lab services to enable scientific progress. Prior to token launch, the team has already been hard at work on a command line interface for lab transactions that will have a test launch in early Q2 2022. Team is led by Niklas Rindtorff. 
+Twitter: https://twitter.com/lab_dao 
+Website: https://www.labdao.com/ 
+Resources: 
+Arye & Niklas–Building a labDAO for web3 Biotech 
+Niklas Rindtorff–Graph Based Protocols 
+UltraRare podcast episode featuring LabDAO; also here. 
+
+CRO Directory Resource 
+
+Virtual Drug Development or Clinical Trial Platforms: coming soon
+mRNA Swap for offsetting risk in clinical trial efficacy studies
+
+Decentralized Space Exploration projects
+LunCo  
+permissionless collaborative space missions design tool powered by web3. With the help of LunCo it’s possible to run complex projects like planning civic CO2 tracking constellations, Lunar colony etc.
+Our mission is to make humanity multiplanetary species by providing a collaborative tool to plan missions together
+		Twitter: https://twitter.com/LunCoSim
+		Discord: https://discord.gg/p4KvvvG6 
+		Gitcoin: https://gitcoin.co/grants/5939/lunco-full-cycle-space-operations-sim-tool 
+		Giveth: https://giveth.io/project/lunco-a-full-cycle-space-operations-sim-tool 
+		Github: https://github.com/LunCoSim/lunco-sim
+
+Focused Research Organizations & Institutes
+
+Foresight Institute
+
+Convergent Research
+
+Astera Institute
+
+Arcadia Institute
+
+New Science
+
+Science NFTs
+
+DNAverse 
+DNAverse is an NFT project collection customized with real DNA data. The long term mission is the geneticizing of avatars in the metaverse and the replication of life in the digital world with a self-sustainable decentralized model.
+Twitter: https://twitter.com/Dnaverse_io
+ 		Discord: https://discord.gg/jxHBUghdnT
+
+GeneNFT 
+GeneNFT is an experiment at the intersection of art, science, and technology.
+
+UltraRare 
+UltraRare is a web3 collective exploring the intersection of art and science. Our team includes scientists, developers, and artists. We care about communicating science through audio and visual means, and we produce the UltraRare The Podcast to help onboard people to the web3 space. 
+
+AtomicHeartNFT 
+AtomicHeartNFT is a web3 collective showcasing images produced using electron microscopy and other advanced microscopy techniques. 
+Twitter: @atomicheartNFT
+
+SameYou 
+SameYou is an NFT collection to raise money for treatments for brain injury or stroke.
+
+FrontierDAO 
+FrontierDAO is a science investment DAO with an art gallery as well - opensea.io/frontierdao 
+
+PLANT GANG 
+PLANT GANG is a community building the herbarium of the metaverse, producing scientific 3D model NFT plant specimens, with associated metadata and physical counterparts. 
+Twitter @PLANTGANGxyz
+Discord: https://discord.gg/hfQhrFFnD4
+
+ArtBlocks “Gels” 
+By Jason Brown & Shawn Douglas. Gels is a science-inspired generative piece. Our algorithm simulates gel electrophoresis. The DNA band patterns in this work derive from combinations of a simulated experimental data and real-world data, including DNA sequences that encode several variants of the SARS-CoV-2 spike protein, and the corresponding mRNA vaccines. Our algorithm first generates plausible sample tubes that typically contain one or more DNA fragments. Then, each sample is distributed and "run" on a simulated gel to create the characteristic band patterns that might be observed on real gels. Our simulations also take into account human error — mistakes are common in the lab. 
+
+Decentralized Financing of Science and/or Philanthropy
+
+BeakerDAO
+BeakerDAO is a DAO, co-initiated by Tribute Labs that supports the expansion of decentralized science. Through research funding and IP management, the DAO aims to promote open accessibility & create decentralized market liquidity across the DeSci space.
+		Twitter: https://twitter.com/beakerdao
+
+Medical.watch
+We're building a medical knowledge base for the world. Imagine a medical version of Wikipedia + UpToDate, updated by doctors in real-time. With Medical.watch, doctors will have the latest medical knowledge to treat patients.
+Our profile 
+Twitter Spaces with DeSciWorld
+
+Moon Rabbit
+Moon Rabbit is a distributed crypto-conglomerate — 安居財閥 (AngoZaibatsu) — constituting a system of systems (Jurisdictions), uniting all distributed ledgers and cryptocurrencies in the ultimate cross-chain protocol – a Metachain. Moon Rabbit is focused on building scalable incentive models and web3 infrastructure to accelerate Longevity R&D. We are constantly integrating new chains and recently partnered with the world's leading Longevity research institution, Foresight Institute.
+Chain info
+Live Jurisdictions 
+NFT Marketplace
+
+Gitcoin
+Gitcoin is a funding mechanism for web3 focused on public goods. Many of the DeSci projects in this Wiki are available for funding through Gitcoin, where your ‘dollars’ will be matched significantly (sometimes 4-60x!)
+Gitcoin had its first DeSci funding round from 9/7-9/22, 2022. 
+“The GR15 Cause Rounds showcase projects using web3 to build & fund solutions related to 4 key social and environmental causes: Climate Solutions, Crypto Advocacy, DEI (Diversity Equity & Inclusion), and [NEW!] DeSci (Decentralized Science). Over $900k of matching funds is available for Cause Rounds so far!” -Gitcoin
+
+Experiment 
+The first crowdfunding platform for science. 
+Launched in 2012 by Cindy Wu and Denny Luan. 
+UltraRare’s Podcast episode with David Lang covers crowdfunding platforms for science (and DeSci): https://rss.com/podcasts/ultrarare/476700/ 
+Experiment Patron NFTs: ​​https://opensea.io/collection/experimentpatrons
+
+Crowd Funded Cures (see above)
+@CrowdFundedCure 
+Pay for success Contracts 
+
+Giveth.io
+
+Science Fund
+An initiative to create funding pools for Science through NFTs
+
+Impact Finance
+Impact Finance builds web3 tools with the aim of increasing the impact that citizen scientists can have on the scientific research process and the development of new technologies. We’re building a community-governed platform that enables science-based digital asset creators to cultivate their professional networks, track reputation, fund research, and unlock new opportunities for collaboration and cooperation. 
+
+
+Sesame Foundation
+For science enthusiasts and philanthropists who want to support research in computational mathematics, the Sesame Foundation provides a platform for creating and contributing to decentralized prizes. Unlike other research funding platforms, Sesame Prizes use smart contracts to ensure that prizes are awarded only once a given problem is actually solved.
+
+GainForest / LabDAO Rainforest Monitoring Lab
+The rainforest monitoring lab is bringing together young engineers, students and scientists to contribute to an open and reproducible machine learning repository for rainforest monitoring. The models will then be used to transparently analyze carbon offset projects around the world and assess nature’s contribution for ReFi. We encourage applicants from traditionally underrepresented communities to apply. LabDAO and GainForest team members will guide all stipend recipients during their research journey. Recipients will receive impact certificates as POAP. Additionally, developed machine learning models have a chance to contribute to GainForest’s $10M XPRIZE Rainforest participation.
+Science program: https://beta.gainforest.app/science
+Main website: http://gainforest.earth/
+
+ViralCure
+We are an impact-first Decentralized Science platform that helps fund healthcare-oriented research and development in alternative ways. Part of the Sthorm Web3 project ecosystem with a long trajectory working with alt-funding for scientific projects.
+		Our Linktree
+Twitter: https://mobile.twitter.com/viral_cure
+		Discord: https://discord.gg/Wv4EQHPuT7 
+
+Data Storage & Blockchain Protocols
+
+DeSci Labs
+DeSci Labs is building the infrastructure for Decentralized Science. DeSci Nodes, the first product from DeSci Labs enables a radically transparent ledger of scientific record that is secure, permanent, interoperable and resistant to cross-national censorship. 
+Watch the product demo or join the discord to learn more
+Twitter: https://twitter.com/DeSciLabs
+
+Fleming Protocol
+A data economy where patients capture the value of their data. Through incentivization & innovative data monetization mechanisms, we enable patients & biomedical innovators to collaborate & create value in a privacy preserving way.
+
+OceanProtocol 
+Tools for the web3 data economy 
+​​Data owners and consumers use Ocean Market app to publish, discover, and consume data in a secure, privacy-preserving fashion. OCEAN holders stake liquidity to data pools. Developers use Ocean libraries to build their own data wallets, data marketplaces, and more. Ocean datatokens wrap data services as industry-standard ERC20 tokens. This enables data wallets, data exchanges, and data co-ops by leveraging crypto wallets, exchanges, and other decentralized finance (DeFi) tools.
+
+Bacalhau
+The goal of our project is to give researchers and data engineers the ability to publicly reproduce data pipelines, thereby making their research more transparent and reusable. Please see our project page here for more detail:
+https://bacalhau.webflow.io/
+https://github.com/filecoin-project/bacalhau
+
+Weavechain
+Weavechain offers a solution for both public and private datasets, with immutable blockchain properties guaranteeing data lineage and advanced role-based permissioning to the table level guaranteeing security. Researchers can share and access secure and tamper-proof data instantly, without any need to download updates, since additions are reflected in real-time. 
+
+Ceramic
+Ceramic is a decentralized network where people can collaborate on open data sets while being in control over their data. ComposeDB is a graph database built on top of Ceramic that enables developers to create public knowledge graphs, social applications, DAO coordination tooling, etc. Ceramic works with most existing web3 wallets and enables a seamless experience for users interacting with data in the system.
+
+Kamu
+Kamu is a decentralized data supply network created to address the ongoing reproducibility crisis in science. Think of it as "Git for Data" that lets you easily share both static and highly dynamic data without losing ownership, collaborate with others on building data processing pipelines that continuously clean, combine, and enrich data from other sources, and effortlessly maintain 100% reproducibility, verifiability, and detailed provenance of data for your analysis and ML projects. 
+To learn more: https://docs.kamu.dev/cli/
+Join our Discord and visit our Github!
+
+Articles / Misc. Resources 
+Feel free to suggest new categories as trends appear.  	
+
+With cryptocurrency and NFTs, ‘decentralized science’ seeks to upend drug industry financing. 
+Stat News article by Allison DeAngelis - June 23, 2022
+
+Molecule Fundraising Announcement
+Decentralized science platform Molecule raises $13 million in seed funding 
+By Tom Matsuda - June 13, 2022 
+
+A Guide to DeSci 
+By Sarah Hamburg published in Future (a16z)
+
+Retroactive Public Goods Funding
+
+How to DAO with People, not just Protocols  
+By Mike McCoy 
+How to organize, make decisions, structure and allocate wealth in DAOs
+
+Science and Web3: Do non-fungible tokens (NFTs) provide a way to democratise and increase scientific funding?
+By Adrian Stencel 
+Article on democratizing science through web3 
+
+Non fungible tokens (NFTs) for academic publications?
+By David Greshan 
+
+How scientists are embracing NFTs
+Nature Article
+
+IBFS (Blockchain for Science) First Announcement 
+
+Epoch 16 - Decentralized Science - DeSci
+By BowTiedBiotech
+
+DeSci: Can Crypto Improve Scientific Research? 
+By Max Parasol
+
+A DeSci Origin Story 
+by Dr. David Koepsell 
+
+Introduction to DeSci
+By Alexandre Demailly - May 19, 2022 
+
+DeSci: How Can DAOs Facilitate Collaboration And Push The Open Science Movement Forward
+By Eliot Couvat (Coinvise)
+
+The New Web 3 Movement to Revolutionize Scientific Research and Funding
+By Sergey Baloyan - May 3, 2022
+
+How do Decentralized Science Organizations Work 
+By Maria Isabella - Feb 25 2022
+
+The Rise of DeSci Blockchain and the Future of Research 
+By AIBC - May 30, 2022
+
+Why Science? Why Blockchain? Why DAO Now?
+By Paige Donner - Dec 26, 2021
+
+Trustless Science
+By Jonathan Starr - May 9 2022
+
+Mediverse Database 
+By Mike Pica
+The Mediverse team has built a page for some of the content contained in this Wiki located here. The rest of Mediverse is for overviews of blockchain and DeSci projects, such as Molecule.
+
+DeSci-Web3 Twitter List 
+By Jocelynn Pearl 
+ 
+DeSci-Web3 Twitter List 
+By Kyosuke Iyama
+
+DeSci Social Communities 
+
+Discord communities 
+VitaDAO discord: https://discord.gg/invite/vitadao
+LabDAO discord https://discord.com/invite/labdao
+Molecule discord: https://discord.com/invite/uAGW7K4hQU 
+Crowd Funded Cures discord: https://discord.gg/6tFG8RDygW 
+DeSciAlliance: https://discord.com/invite/D2DxBpkfWZ  
+DeSci Labs discord: https://discord.gg/s5tJFwCYvK 
+DeSciWorld discord: https://discord.gg/KchqF35uKm 
+Web3 Women in Science discord: https://discord.gg/X3cx5zer 
+DeSci Africa:  https://discord.gg/4QyGdzknP8
+
+Telegram communities
+Blockchain for Science: https://t.me/BlockchainForScience
+Open Science Ecosystem: https://t.me/osftw
+Research Collective: https://t.me/joinchat/PDmTa9ByTy44MDIx 
+Design Thinking / UX in DeSci (reach out to @danielyse_ on Twitter) 
+DeSci Africa:  https://t.me/DeSciAfrica
+
+Book Recommendations
+
+Working in Public by Nadia Eghbal 
+
+Reinventing Discovery by Michael Nielsen
+
+Reinventing Organizations by Frederic Laloux
+
+Impact Networks by David Ehrlichman
+
+
+
+Archived Projects 
+OpenAccessDAO 
+Making science open access for all. 
+	Twitter: https://twitter.com/OpenAccessDAO
+	Discord: https://discord.gg/qQWeRAXg
+FAQ
+OaDAO Knowledge Resources
+Jocelynn notes: server now dead. 
+
+Framework Bio 
+Founder: Patrick Thayer
+Twitter: https://twitter.com/frameworkbio 
+Dani notes: Project on hold while team is focused on continuing education 
+
+DeSci Nerdery 
+Discord: https://discord.gg/R3pjhntRDj (not company affiliated)
+
+DeBio Network 
+DeBio eliminates risks of genetic discrimination by leveraging blockchain technology and high-level encryption to protect identity — while allowing users to access the benefits of genetic testing
+Whitepaper here
+DeBio discord: https://discord.com/invite/J2nWEB4Vn2 
+Try it out on Testnet or run on Mainnet  
+
+LYNX 
+
+Cloud Labs
+Strateos, Emerald Cloud Labs
+
+
