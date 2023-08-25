@@ -1,0 +1,3 @@
+farm-haystack==1.19.0
+farm-haystack[inference]==1.19.0
+validators==0.21.1
