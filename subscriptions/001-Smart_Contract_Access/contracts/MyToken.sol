@@ -16,7 +16,7 @@ contract MyToken is ERC20 {
 
     // The Smart Contract address of the Subscription NFT
     address public subscriptionNFTAddress;
-    bytes32 public _tokenId = 0x0;
+    bytes32 public tokenId = 0x0;
 
     IERC1155 private subscriptionNFT;
 
@@ -27,7 +27,7 @@ contract MyToken is ERC20 {
 
     modifier onlySubscribers(address _address) {
         require(            
-            subscriptionNFT.balanceOf(_address, uint256(_tokenId)) > 0,
+            subscriptionNFT.balanceOf(_address, uint256(tokenId)) > 0,
             'You are not a subscriber'
         );
         _;
@@ -36,11 +36,11 @@ contract MyToken is ERC20 {
     /**
      * Contract initialization.
      */
-    constructor(address nftContract, bytes32 tokenId) ERC20("MyToken", "NVM") {
+    constructor(address nftContract, bytes32 subscriptionTokenId) ERC20("MyToken", "NVM") {
         _mint(msg.sender, 0);
         owner = msg.sender;
         subscriptionNFTAddress = nftContract;
-        _tokenId = tokenId;
+        tokenId = subscriptionTokenId;
         subscriptionNFT = IERC1155(subscriptionNFTAddress);
     }
    
