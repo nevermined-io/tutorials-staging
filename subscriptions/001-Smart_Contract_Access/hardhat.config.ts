@@ -6,7 +6,7 @@ const config: HardhatUserConfig = {
   networks: {
     hardhat: {
       forking: {
-        url: `https://polygon-mumbai.infura.io/v3/${process.env.INFURA_TOKEN}`,
+        url: `https://sepolia-rollup.arbitrum.io/rpc`,
       }
     }
   }

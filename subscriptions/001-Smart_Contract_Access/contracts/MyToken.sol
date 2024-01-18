@@ -4,7 +4,7 @@
 // It will be used by the Solidity compiler to validate its version.
 pragma solidity ^0.8.9;
 
-import '@openzeppelin/contracts/token/ERC721/IERC721.sol';
+import '@openzeppelin/contracts/token/ERC1155/IERC1155.sol';
 import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 
 // This is the main building block for smart contracts.
@@ -16,8 +16,9 @@ contract MyToken is ERC20 {
 
     // The Smart Contract address of the Subscription NFT
     address public subscriptionNFTAddress;
+    bytes32 public _tokenId = 0x0;
 
-    IERC721 private subscriptionNFT;
+    IERC1155 private subscriptionNFT;
 
     // A mapping is a key/value map. Here we store each account's balance.
     mapping(address => uint256) giveAwayBalances;
@@ -25,8 +26,8 @@ contract MyToken is ERC20 {
     event Airdropped(address indexed _who, uint256 _amount);
 
     modifier onlySubscribers(address _address) {
-        require(
-            subscriptionNFT.balanceOf(_address) > 0,
+        require(            
+            subscriptionNFT.balanceOf(_address, uint256(_tokenId)) > 0,
             'You are not a subscriber'
         );
         _;
@@ -35,11 +36,12 @@ contract MyToken is ERC20 {
     /**
      * Contract initialization.
      */
-    constructor(address nftContract) ERC20("MyToken", "NVM") {
+    constructor(address nftContract, bytes32 tokenId) ERC20("MyToken", "NVM") {
         _mint(msg.sender, 0);
         owner = msg.sender;
         subscriptionNFTAddress = nftContract;
-        subscriptionNFT = IERC721(subscriptionNFTAddress);
+        _tokenId = tokenId;
+        subscriptionNFT = IERC1155(subscriptionNFTAddress);
     }
    
     function claim(uint256 amount) public onlySubscribers(msg.sender) {

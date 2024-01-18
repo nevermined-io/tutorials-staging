@@ -6,11 +6,13 @@ describe("MyToken Test", function () {
 
     // The address of the NFT Subscription contract deployed on Polygon Mumbai
     // You can deploy your own by following the instructions in the README
-    const nftContractAddress = process.env.NFT_CONTRACT_ADDRESS || '0xec47BC8988a4865bD371ADe72b74A51Afbe42F71'
+    const nftContractAddress = process.env.NFT_CONTRACT_ADDRESS || '0x1bcA156f746C6Eb8b18d61654293e2Fc5b653fF5'
+
+    const tokenId = process.env.NFT_TOKEN_ID || '0x54c76f49dcfde63b1ce75412a3105bfb702b3e123a7e61320937f0ca792736e7'
 
     // The address of the NFT subscriber purchasing the NFT Subscription contract
     // We are impersonation this account to test the contract
-    const subscriberAddress = process.env.SUBSCRIBER_ADDRESS || '0x9Aa6E515c64fC46FC8B20bA1Ca7f9B26ff404548'
+    const subscriberAddress = process.env.SUBSCRIBER_ADDRESS || '0xf6dA28bEc818F8a823ea25a8C2e785f1D07913af'
 
     const giveAwayAmount = 10
     let myToken: MyToken
@@ -28,7 +30,7 @@ describe("MyToken Test", function () {
     it("Deployment should assign the total supply of tokens to the owner", async function () {        
     
         const Token = await ethers.getContractFactory("MyToken")    
-        myToken = await Token.deploy(nftContractAddress)
+        myToken = await Token.deploy(nftContractAddress, tokenId)
 
     })
 
@@ -61,7 +63,7 @@ describe("MyToken Test", function () {
         
         it("A subscriber should have some give away to claim", async function () {
             const howMuch = await myTokenSsubscriberSigner.howMuchCanIClaim()
-            console.log(`How much can I claim? ${howMuch.toString()}`)
+            console.log(`How much can I (${subscriber.address}) claim? ${howMuch.toString()}`)
 
             expect(howMuch).to.equal(giveAwayAmount)
         })
