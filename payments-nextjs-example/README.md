@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+[![banner](https://raw.githubusercontent.com/nevermined-io/assets/main/images/logo/banner_logo.png)](https://nevermined.io)
 
-## Getting Started
+# Tutorial on how to use the Nevermined Payments Protocol in a React app (using Nextjs)
 
-First, run the development server:
+## Quickstart
 
-```bash
-npm run dev
-# or
+Run the development server
+
+```
+yarn
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Initialize the payments library
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+For a full description of what you can do with the _payments_ library please refer to [@nevermined-io/payments](https://github.com/nevermined-io/payments)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```typescript
+import { useEffect } from "react";
+import { Payments } from "@nevermined-io/payments";
 
-## Learn More
+export default function Home() {
+  const payments = new Payments({
+    returnUrl: "http://localhost:8080",
+    environment: "staging",
+  });
 
-To learn more about Next.js, take a look at the following resources:
+  const onLogin = () => {
+    payments.connect();
+  };
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  useEffect(() => {
+    payments.init();
+  }, []);
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+  return (
+    <main>
+      <div>
+        <button onClick={onLogin}>Login</button>
+      </div>
+    </main>
+  );
+}
+```
 
-## Deploy on Vercel
+The `init()` method should be called immediately after the app returns the user to `returnUrl`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Create a subscription
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Once the app is initialized we can create a subscription:
+
+```typescript
+async function createSubscription() {
+  if (payments.isLoggedIn) {
+    const { did } = await payments.createSubscription({
+      name: "test subscription",
+      description: "test",
+      price: 10000000n,
+      tokenAddress: "0x75faf114eafb1BDbe2F0316DF893fd58CE46AA4d",
+      duration: 30,
+      tags: ["test"],
+    });
+  }
+}
+```
