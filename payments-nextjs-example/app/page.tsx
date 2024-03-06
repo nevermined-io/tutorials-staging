@@ -8,7 +8,7 @@ export default function Home() {
     new Payments({ returnUrl: "http://localhost:8080", environment: "appStaging", appId: "test", version: "v1"})
   )
   
-  const [nvmPaymentsData, setNvmPaymentsData] = useState<Payments>(nvmRef.current)
+  const [payments, setPayments] = useState<Payments>(nvmRef.current)
   const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(false)
   const [subscriptionDid, setSubscriptionDid] = useState<string>("")
   const [serviceDid, setServiceDid] = useState<string>("")
@@ -20,21 +20,26 @@ export default function Home() {
 
   const onLogout = () => {
     nvmRef.current.logout()
-    setNvmPaymentsData(nvmRef.current)
-    setIsUserLoggedIn(nvmPaymentsData.isLoggedIn)
+    setPayments(nvmRef.current)
+    setIsUserLoggedIn(payments.isLoggedIn)
   }
 
   useEffect(() => {
     nvmRef.current.init()
-    setNvmPaymentsData(nvmRef.current)
-    setIsUserLoggedIn(nvmPaymentsData.isLoggedIn)
+    setPayments(nvmRef.current)
   }, [])
+
+  useEffect(() => {
+    if (payments.isLoggedIn) {
+      setIsUserLoggedIn(true)
+    }
+  }, [payments.isLoggedIn])
 
 
   async function createSubscription() {
-    if (nvmRef.current.isLoggedIn) {
+    if (payments.isLoggedIn) {
       console.log("creating subscription");
-      const result = await nvmRef.current.createSubscription({
+      const result = await payments.createSubscription({
         name: "test subscription",
         description: "test",
         price: 10000000n,
@@ -50,9 +55,9 @@ export default function Home() {
   }
 
   async function createService() {
-    if (nvmRef.current.isLoggedIn) {
+    if (payments.isLoggedIn) {
       console.log("creating webservice");
-      const result = await nvmRef.current.createService({
+      const result = await payments.createService({
         subscriptionDid: "did:nv:6b1bcfd7b41b688b1cddd3dfdd847fbaa0c90014cad33026fa4f768503260de6", 
         name: "test webservice",
         description: "test",
@@ -73,9 +78,9 @@ export default function Home() {
   }
 
   async function createFile() {
-    if (nvmRef.current.isLoggedIn) {
+    if (payments.isLoggedIn) {
       console.log("creating dataset");
-      const result = await nvmRef.current.createFile({
+      const result = await payments.createFile({
         subscriptionDid: "did:nv:6b1bcfd7b41b688b1cddd3dfdd847fbaa0c90014cad33026fa4f768503260de6", 
         name: "test dataset",
         description: "test",
@@ -98,15 +103,15 @@ export default function Home() {
   }
 
   const onSubscritionGoToDetails = (did: string) => {
-    nvmRef.current.getSubscriptionDetails(did)
+    payments.getSubscriptionDetails(did)
   }
 
   const onServiceGoToDetails = (did: string) => {
-    nvmRef.current.getServiceDetails(did)
+    payments.getServiceDetails(did)
   }
 
   const onFileGoToDetails = (did: string) => {
-    nvmRef.current.getFileDetails(did)
+    payments.getFileDetails(did)
   }
 
 
@@ -121,7 +126,7 @@ export default function Home() {
           <button disabled={!isUserLoggedIn} onClick={createService}>Create Webservice</button>
           <button disabled={!isUserLoggedIn} onClick={createFile}>Create Dataset</button>
         </div>
-        {isUserLoggedIn && <div>User is logged in with app ID {nvmPaymentsData.appId} and version {nvmPaymentsData.version}</div>}
+        {isUserLoggedIn && <div>User is logged in with app ID {payments.appId} and version {payments.version}</div>}
         {isUserLoggedIn && subscriptionDid && <div>Subscription DID: <button onClick={() => onSubscritionGoToDetails(subscriptionDid)}>{subscriptionDid}</button> </div>}
         {isUserLoggedIn && serviceDid && <div>Service DID: <button onClick={() => onServiceGoToDetails(serviceDid)}>{serviceDid}</button> </div>}
         {isUserLoggedIn && fileDid && <div>File DID: <button onClick={() => onFileGoToDetails(fileDid)}>{fileDid}</button> </div>}
