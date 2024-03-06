@@ -1,13 +1,15 @@
 "use client";
 
-import {  useEffect, useRef, useState } from "react"
-import { Payments } from "@nevermined-io/payments"
+import { Payments } from "@nevermined-io/payments";
+import { useEffect, useRef, useState } from "react"
 
 export default function Home() {
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(false)
   const nvmRef = useRef(
-    new Payments({ returnUrl: "http://localhost:8080", environment: "appStaging" })
+    new Payments({ returnUrl: "http://localhost:8080", environment: "appStaging", appId: "test", version: "v1"})
   )
+  
+  const [nvmPaymentsData, setNvmPaymentsData] = useState<Payments>(nvmRef.current)
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(false)
   const [subscriptionDid, setSubscriptionDid] = useState<string>("")
   const [serviceDid, setServiceDid] = useState<string>("")
   const [fileDid, setFileDid] = useState<string>("")
@@ -16,15 +18,17 @@ export default function Home() {
     nvmRef.current.connect()
   }
 
-  useEffect(() => {
-    nvmRef.current.init()
-  }, []);
+  const onLogout = () => {
+    nvmRef.current.logout()
+    setNvmPaymentsData(nvmRef.current)
+    setIsUserLoggedIn(nvmPaymentsData.isLoggedIn)
+  }
 
   useEffect(() => {
-    if(nvmRef.current.isLoggedIn) {
-      setIsUserLoggedIn(true)
-    }
-  }, [nvmRef.current.isLoggedIn])
+    nvmRef.current.init()
+    setNvmPaymentsData(nvmRef.current)
+    setIsUserLoggedIn(nvmPaymentsData.isLoggedIn)
+  }, [])
 
 
   async function createSubscription() {
@@ -109,16 +113,18 @@ export default function Home() {
   return (
     <main>
       <div>
-        <button onClick={onLogin}>Login</button>
-        {isUserLoggedIn ? "Logged in" : "Not logged in"}
+        {!isUserLoggedIn && <button onClick={onLogin}>{"Log in"}</button>}
+        {isUserLoggedIn && <button onClick={onLogout}>{"Log out"}</button>}
+
         <div>
-          <button onClick={createSubscription}>Create Subscription</button>
-          <button onClick={createService}>Create Webservice</button>
-          <button onClick={createFile}>Create Dataset</button>
+          <button disabled={!isUserLoggedIn} onClick={createSubscription}>Create Subscription</button>
+          <button disabled={!isUserLoggedIn} onClick={createService}>Create Webservice</button>
+          <button disabled={!isUserLoggedIn} onClick={createFile}>Create Dataset</button>
         </div>
-        {subscriptionDid && <div>Subscription DID: <button onClick={() => onSubscritionGoToDetails(subscriptionDid)}>{subscriptionDid}</button> </div>}
-        {serviceDid && <div>Service DID: <button onClick={() => onServiceGoToDetails(serviceDid)}>{serviceDid}</button> </div>}
-        {fileDid && <div>File DID: <button onClick={() => onFileGoToDetails(fileDid)}>{fileDid}</button> </div>}
+        {isUserLoggedIn && <div>User is logged in with app ID {nvmPaymentsData.appId} and version {nvmPaymentsData.version}</div>}
+        {isUserLoggedIn && subscriptionDid && <div>Subscription DID: <button onClick={() => onSubscritionGoToDetails(subscriptionDid)}>{subscriptionDid}</button> </div>}
+        {isUserLoggedIn && serviceDid && <div>Service DID: <button onClick={() => onServiceGoToDetails(serviceDid)}>{serviceDid}</button> </div>}
+        {isUserLoggedIn && fileDid && <div>File DID: <button onClick={() => onFileGoToDetails(fileDid)}>{fileDid}</button> </div>}
       </div>
     </main>
   )
