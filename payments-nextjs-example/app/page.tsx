@@ -1,6 +1,6 @@
 "use client";
 
-import { Payments } from "@nevermined-io/payments";
+import { Payments } from "@nevermined-io/payments"
 import { useEffect, useRef, useState } from "react"
 
 export default function Home() {
@@ -102,6 +102,14 @@ export default function Home() {
     }
   }
 
+  async function getServiceToken(did: string) {
+    if (payments.isLoggedIn) {
+      console.log("getting service token");
+      const result = await payments.getServiceToken(did)
+      console.log(result)
+    }
+  }
+
   const onSubscritionGoToDetails = (did: string) => {
     payments.getSubscriptionDetails(did)
   }
@@ -126,6 +134,7 @@ export default function Home() {
           <button disabled={!isUserLoggedIn} onClick={createService}>Create Webservice</button>
           <button disabled={!isUserLoggedIn} onClick={createFile}>Create Dataset</button>
         </div>
+        {isUserLoggedIn && serviceDid &&  <button disabled={!isUserLoggedIn} onClick={() => getServiceToken(serviceDid)}>Get Service Token</button>}
         {isUserLoggedIn && <div>User is logged in with app ID {payments.appId} and version {payments.version}</div>}
         {isUserLoggedIn && subscriptionDid && <div>Subscription DID: <button onClick={() => onSubscritionGoToDetails(subscriptionDid)}>{subscriptionDid}</button> </div>}
         {isUserLoggedIn && serviceDid && <div>Service DID: <button onClick={() => onServiceGoToDetails(serviceDid)}>{serviceDid}</button> </div>}
