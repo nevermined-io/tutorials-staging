@@ -1,7 +1,7 @@
 "use client";
 
-import { Payments } from "@nevermined-io/payments"
-import { useEffect, useRef, useState } from "react"
+import { Payments } from "@nevermined-io/payments";
+import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
   const nvmRef = useRef(
@@ -110,6 +110,39 @@ export default function Home() {
     }
   }
 
+  async function getDDO(did: string) {
+    if (payments.isLoggedIn) {
+      console.log("getting ddo");
+      const result = await payments.getAssetDDO(did)
+      console.log(result)
+    }
+  }
+
+  async function getBalance(did: string) {
+    if (payments.isLoggedIn) {
+      console.log("getting balance");
+      const result = await payments.getSubscriptionBalance(did)
+      console.log(result)
+    }
+  }
+
+  // TODO: uncomment when the methods are available
+  // async function orderSubscription(did: string) {
+  //   if (payments.isLoggedIn) {
+  //     console.log("ordering subscription");
+  //     const result = await payments.orderSubscription(did)
+  //     console.log(result)
+  //   }
+  // }
+
+  // async function downloadFile(did: string) {
+  //   if (payments.isLoggedIn) {
+  //     console.log("downloading file");
+  //     const result = await payments.downloadFiles(did)
+  //     console.log(result)
+  //   }
+  // }
+
   const onSubscritionGoToDetails = (did: string) => {
     payments.getSubscriptionDetails(did)
   }
@@ -126,6 +159,7 @@ export default function Home() {
   return (
     <main>
       <div>
+        {JSON.stringify(payments)}
         {!isUserLoggedIn && <button onClick={onLogin}>{"Log in"}</button>}
         {isUserLoggedIn && <button onClick={onLogout}>{"Log out"}</button>}
 
@@ -133,6 +167,12 @@ export default function Home() {
           <button disabled={!isUserLoggedIn} onClick={createSubscription}>Create Subscription</button>
           <button disabled={!isUserLoggedIn} onClick={createService}>Create Webservice</button>
           <button disabled={!isUserLoggedIn} onClick={createFile}>Create Dataset</button>
+          <button disabled={!isUserLoggedIn} onClick={() => getDDO('did:nv:f5dcc62d5308d3bf76befc9bf95f5c9f53406952ff00bd46acb851664bad89d9')}>GET DDO</button>
+          <button disabled={!isUserLoggedIn} onClick={() => getBalance('did:nv:f5dcc62d5308d3bf76befc9bf95f5c9f53406952ff00bd46acb851664bad89d9')}>GET Balance</button>
+        {/*
+          <button disabled={!isUserLoggedIn} onClick={() => orderSubscription('did:nv:b2ea886bc3b1a2319fa02b99edf444b681778505145124f6bf301b95826dd894')}>Order</button>
+          <button disabled={!isUserLoggedIn} onClick={() => downloadFile('did:nv:d65e2726b37510d231a86183d0de5d9281830381b579315c64e1eea7ee3e416f')}>Download file</button>  
+        */}
         </div>
         {isUserLoggedIn && serviceDid &&  <button disabled={!isUserLoggedIn} onClick={() => getServiceToken(serviceDid)}>Get Service Token</button>}
         {isUserLoggedIn && <div>User is logged in with app ID {payments.appId} and version {payments.version}</div>}
