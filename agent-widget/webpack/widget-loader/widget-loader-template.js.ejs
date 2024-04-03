@@ -1,0 +1,37 @@
+(function () {
+  var url = new URL(document.currentScript.src)
+  var origin = url.origin + url.pathname.slice(0, url.pathname.lastIndexOf('/'));
+  var scripts = <%- JSON.stringify(scripts) %>;
+
+  for (var i = 0; i < scripts.length; i++) {
+    var file = scripts[i];
+    var filePath = `${origin}/${file}`;
+    var selector = `script[src='${filePath}']`;
+
+    document.querySelectorAll(selector).forEach(function (elem) {
+      elem.remove();
+    });
+
+    var script = document.createElement('script');
+    script.src = `${filePath}`;
+    script.defer = true;
+    document.currentScript.after(script);
+  }
+
+  var stylesheets = <%- JSON.stringify(stylesheets) %>;
+
+  for (var i = 0; i < stylesheets.length; i++) {
+    var file = stylesheets[i];
+    var filePath = `${origin}/${file}`;
+    var selector = `link[rel='stylesheet'][href='${filePath}']`
+
+    document.querySelectorAll(selector).forEach(function (elem) {
+      elem.remove();
+    });
+
+    const link = document.createElement('link');
+    link.href = `${filePath}`;
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+  }
+})();
