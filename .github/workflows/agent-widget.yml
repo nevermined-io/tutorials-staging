@@ -25,4 +25,13 @@ jobs:
         run: |
           yarn install --frozen-lockfile
           yarn build
+
+      - name: Deploy
+        env:
+          MY_EMAIL: aaitor@gmail.com
+          MY_NAME: aaitor
+        run: |
+          git config --global user.email $MY_EMAIL
+          git config --global user.name $MY_NAME
+          git remote set-url origin https://$MY_NAME:${{ secrets.ACTIONS_SECRET }}@github.com/nevermined-io/tutorials.git
           yarn deploy
