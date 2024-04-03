@@ -1,12 +1,29 @@
 name: Build agent-widget
 
 on:
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+  # Runs on pushes targeting the default branch
   push:
     branches: ['main']
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+
 jobs:
   build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,13 +43,13 @@ jobs:
           yarn install --frozen-lockfile
           yarn build
 
-      - name: Deploy
-        working-directory: ./agent-widget
-        env:
-          MY_EMAIL: aaitor@gmail.com
-          MY_NAME: aaitor
-        run: |
-          git config --global user.email $MY_EMAIL
-          git config --global user.name $MY_NAME
-          git remote set-url origin https://$MY_NAME:${{ secrets.ACTIONS_SECRET }}@github.com/nevermined-io/tutorials.git
-          yarn deploy
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "./dist"
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
