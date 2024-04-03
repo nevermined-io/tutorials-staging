@@ -6,10 +6,12 @@
   "scripts": {
     "dev": "webpack serve --mode development --progress --hot --config ./webpack/webpack.config.development.js",
     "build": "webpack --mode production --config ./webpack/webpack.config.production.js",
-    "lint": "eslint ./src",
+    "lint": "eslint ./src/react",
     "lint:fix": "npm run lint -- --fix",
     "prettier": "prettier --config ./prettier.config.js --write \"src/**/*.{js,json,md,sol,ts,yml}\"",
-    "prettier:check": "prettier --check --config ./prettier.config.js \"src/**/*.{js,json,md,sol,ts,yml}\""
+    "prettier:check": "prettier --check --config ./prettier.config.js \"src/**/*.{js,json,md,sol,ts,yml}\"",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist -u 'github-actions-bot <support+actions@github.com>'"
   },
   "keywords": [
     "typescript",
@@ -41,6 +43,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-unicorn": "^48.0.0",
     "file-loader": "^6.2.0",
+    "gh-pages": "^6.1.1",
     "html-webpack-plugin": "^5.6.0",
     "mini-css-extract-plugin": "^2.8.1",
     "postcss": "^8.4.38",
