@@ -11,7 +11,7 @@
     "prettier": "prettier --config ./prettier.config.js --write \"src/**/*.{js,json,md,sol,ts,yml}\"",
     "prettier:check": "prettier --check --config ./prettier.config.js \"src/**/*.{js,json,md,sol,ts,yml}\"",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist -u 'github-actions-bot <support+actions@github.com>'"
   },
   "keywords": [
     "typescript",
