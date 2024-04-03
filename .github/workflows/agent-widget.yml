@@ -28,10 +28,10 @@ jobs:
 
       - name: Deploy
         env:
-          MY_EMAIL: nvm-bot@nevermined.io
-          MY_NAME: nvm-bot
+          MY_EMAIL: aaitor@gmail.com
+          MY_NAME: aaitor
         run: |
           git config --global user.email $MY_EMAIL
           git config --global user.name $MY_NAME
-          git remote set-url origin https://$MY_NAME:${{ secrets.GH_SECRET }}@github.com/nevermined-io/tutorials.git
+          git remote set-url origin https://$MY_NAME:${{ secrets.ACTIONS_SECRET }}@github.com/nevermined-io/tutorials.git
           yarn deploy
