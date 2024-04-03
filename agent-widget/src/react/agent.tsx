@@ -85,11 +85,13 @@ export const Agent = () => {
 
   return (
     <div className="agent-container">
-      <div
-        className="nvm-agent-widget"
-        nvm-did="did:nv:f4ea1e76c9155615f771badd0d88e8690f3a2565207591aaf40ea3e61710d18f"
-        nvm-layout="horizontal"
-      />
+      <div className="widget-container">
+        <div
+          className="nvm-agent-widget"
+          nvm-did="did:nv:f4ea1e76c9155615f771badd0d88e8690f3a2565207591aaf40ea3e61710d18f"
+          nvm-layout="horizontal"
+        />
+      </div>
       <div className="chat-panel">
         <div className="thread-container">
           <ul>
