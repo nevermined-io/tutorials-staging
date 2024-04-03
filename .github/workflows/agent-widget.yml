@@ -27,6 +27,7 @@ jobs:
           yarn build
 
       - name: Deploy
+        working-directory: ./agent-widget
         env:
           MY_EMAIL: aaitor@gmail.com
           MY_NAME: aaitor
