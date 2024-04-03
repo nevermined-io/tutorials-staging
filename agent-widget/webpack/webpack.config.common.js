@@ -16,7 +16,7 @@ module.exports = (env, options) => {
     output: {
       filename: '[name]-[hash].js',
       path: paths.dist(),
-      publicPath: '/',
+      publicPath: '.',
       clean: true,
     },
     module: {
