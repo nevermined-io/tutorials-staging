@@ -76,7 +76,7 @@ export const Agent = () => {
 
   useEffect(() => {
     insertWidgetScriptBefore(
-      'https://widgets.staging.nevermined.app/nvm-agent-widget-loader.js',
+      'https://widgets.testing.nevermined.app/nvm-agent-widget-loader.js',
       document.querySelector('.nvm-agent-widget')!
     );
 
@@ -88,7 +88,7 @@ export const Agent = () => {
       <div className="widget-container">
         <div
           className="nvm-agent-widget"
-          nvm-did="did:nv:f4ea1e76c9155615f771badd0d88e8690f3a2565207591aaf40ea3e61710d18f"
+          nvm-did="did:nv:8797caa1baf332316e7d76d53c37619870672062df9727e94a6c714df821f5cf"
           nvm-layout="horizontal"
         />
       </div>
