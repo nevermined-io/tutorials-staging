@@ -18,6 +18,8 @@ type AssistantResponseEvent = MessageEvent<{
   data: AssistantThread;
 }>;
 
+type StatusEvent = MessageEvent<{ type: 'nvm-agent:status'; data: string | 'top-up' }>;
+
 type AgentQueryResponse = {
   assistantId: string;
   threadId: string;
@@ -26,11 +28,14 @@ type AgentQueryResponse = {
   runId: string;
   runStatus: string;
   tokensUsed: number;
+  creditsUsed: number;
 };
 
 type AssistantThread = {
   author: 'user' | 'assistant';
   message: string;
   date: Date;
+  messageType: 'query' | 'response';
+  messageStatus: 'loading' | 'finished' | 'failed';
   queryResponse: AgentQueryResponse;
 };
