@@ -1,24 +1,29 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import './agent.scss';
+import { Modal } from './modal/modal';
+import { useParams } from 'react-router-dom';
+import { useSearchParams } from '../../node_modules/react-router-dom/dist/index';
 
-const insertWidgetScriptBefore = (
-  srcFile: string,
-  insertBeforeElement: HTMLElement
-) => {
-  const selector = `script[src='${srcFile}']`;
+const InjectScript = React.memo(({ script }: { script: string }) => {
+  const divRef = useRef<HTMLDivElement | null>(null);
 
-  if (document.querySelectorAll(selector).length > 0) {
-    return;
-  }
+  useEffect(() => {
+    if (divRef.current === null) {
+      return;
+    }
 
-  const script = document.createElement('script');
-  script.src = srcFile;
-  script.defer = true;
+    const doc = document.createRange().createContextualFragment(script);
 
-  insertBeforeElement.parentNode?.insertBefore(script, insertBeforeElement);
-};
+    divRef.current.innerHTML = '';
+    divRef.current.appendChild(doc);
+  }, [script]);
+
+  return <div ref={divRef} />;
+});
 
 export const Agent = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const [thread, setThread] = useState<AssistantThread[]>([]);
 
   const [query, setQuery] = useState('');
@@ -31,9 +36,27 @@ export const Agent = () => {
 
   const [mustTopUp, setMustTopUp] = useState(false);
 
+  const [showModal, setShowModal] = useState(false);
+
+  const [textareaWidgetHtmlCode, setTextareaWidgetHtmlCode] = useState('');
+
+  const [widgetHtmlCode, setWidgetHtmlCode] = useState('');
+
   const messageRef = useRef<HTMLTextAreaElement>(null);
 
   const threadEndRef = useRef<HTMLDivElement>(null);
+
+  const loadWidget = () => {
+    setAgentData(null);
+
+    setMustTopUp(false);
+
+    setShowModal(false);
+
+    setThread([]);
+
+    setSearchParams({ html: encodeURIComponent(textareaWidgetHtmlCode) });
+  };
 
   const resetQuery = () => {
     setQuery('');
@@ -124,22 +147,58 @@ export const Agent = () => {
   }, [thread]);
 
   useEffect(() => {
-    insertWidgetScriptBefore(
-      'https://widgets.testing.nevermined.app/nvm-agent-widget-loader.js',
-      document.querySelector('.nvm-agent-widget')!
-    );
+    const encodedHtml = searchParams.get('html');
 
+    if (encodedHtml) {
+      const decodedHtml = decodeURIComponent(encodedHtml)
+
+      setWidgetHtmlCode(decodedHtml);
+      setTextareaWidgetHtmlCode(decodedHtml);
+    }
+  }, [searchParams]);
+
+  useEffect(() => {
     window.addEventListener('message', handleAgentEvents, false);
   }, []);
 
   return (
     <div className="agent-container">
       <div className="widget-container">
-        <div
-          className="nvm-agent-widget"
-          nvm-did="did:nv:8797caa1baf332316e7d76d53c37619870672062df9727e94a6c714df821f5cf"
-          nvm-layout="horizontal"
-        />
+        {showModal && (
+          <Modal
+            onCloseClick={() => {
+              setShowModal(false);
+            }}
+          >
+            <div className="textarea-content">
+              <textarea
+                value={textareaWidgetHtmlCode}
+                onChange={(e) =>
+                  setTextareaWidgetHtmlCode(e.currentTarget.value)
+                }
+                tabIndex={0}
+                autoFocus
+              ></textarea>
+              <button
+                type="submit"
+                onClick={() => {
+                  loadWidget();
+                }}
+                disabled={!textareaWidgetHtmlCode}
+              >
+                Save
+              </button>
+            </div>
+          </Modal>
+        )}
+        <button
+          type="submit"
+          className="toggle"
+          onClick={() => setShowModal((prev) => !prev)}
+        >
+          Add a widget HTML code
+        </button>
+        <InjectScript script={widgetHtmlCode} />
       </div>
       <div className="chat-panel">
         <div className="thread-container">
