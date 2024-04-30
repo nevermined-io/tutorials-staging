@@ -57,6 +57,7 @@ ul {
   align-items: flex-start;
   gap: 20px;
   height: 100%;
+  padding: 0;
 
   li {
     display: flex;
@@ -180,4 +181,13 @@ ul {
       cursor: not-allowed;
     }
   }
+}
+
+.top-up {
+  color: #fff;
+  background-color: #4d3800;
+  border: 0px solid #e6a700;
+  border-left-width: 5px;
+  padding: 1rem;
+  width: 100%;
 }
