@@ -12,6 +12,7 @@ body {
 
 #root {
   height: 100%;
+  padding: 10px;
 }
 
 .agent-container {
@@ -22,14 +23,13 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid #cecece;
 }
 
 .widget-container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 
 .chat-panel {
@@ -190,4 +190,10 @@ ul {
   border-left-width: 5px;
   padding: 1rem;
   width: 100%;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
