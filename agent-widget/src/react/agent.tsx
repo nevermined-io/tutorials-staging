@@ -190,8 +190,8 @@ export const Agent = () => {
           <div>
             <div className="options">
               {[
-                'did:nv:6004fbe1fc4508f45fae98009854199811e5c803e035c04b21d48ac8625b3035',
-                'did:nv:f4f4d59075832a43d29cc5396f6dc95e575a9673425543bd18e6fd01c3fd19e0',
+                'did:nv:0b9fe3ce194e610a1039848272de64ced506ab656062448c814cec0311f8a243',
+                'did:nv:ea1f90bbd03f5c88f2db09591b3319bfc382932d6cd1b165278a1c5a78551345',
                 isHtmlCodeEnabled && 'html',
               ]
                 .filter(Boolean)
