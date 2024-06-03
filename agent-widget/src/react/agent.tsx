@@ -87,6 +87,8 @@ export const Agent = () => {
         break;
       }
       case 'nvm-agent:query-response': {
+        const response = e.data.data as AssistantThread;
+
         setThread((prev) => {
           const lastMessage = prev.at(-1);
 
@@ -94,12 +96,17 @@ export const Agent = () => {
             prev.pop();
           }
 
-          return [...prev, e.data.data as AssistantThread];
+          return [...prev, response];
         });
+
+        if (response.messageStatus === 'failed') {
+          setIsWaitingForResponse(false);
+        }
         break;
       }
       case 'nvm-agent:assistant-response': {
-        setThread((prev) => [...prev, e.data.data as AssistantThread]);
+        const response = e.data.data as AssistantThread;
+        setThread((prev) => [...prev, response]);
         setIsWaitingForResponse(false);
         break;
       }
