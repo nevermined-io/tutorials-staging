@@ -197,7 +197,7 @@ export const Agent = () => {
           <div>
             <div className="options">
               {[
-                'did:nv:0b9fe3ce194e610a1039848272de64ced506ab656062448c814cec0311f8a243',
+                'did:nv:df3356137935deb24f3eb5607c1d16b7324548a3e1271ab5f80bbace424b7717',
                 'did:nv:ea1f90bbd03f5c88f2db09591b3319bfc382932d6cd1b165278a1c5a78551345',
                 isHtmlCodeEnabled && 'html',
               ]
